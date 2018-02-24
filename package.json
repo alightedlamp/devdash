@@ -1,0 +1,30 @@
+{
+  "name": "devdash",
+  "version": "1.0.0",
+  "description": "A developer dashboard for developing developers",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alightedlamp/devdash.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alightedlamp/devdash/issues"
+  },
+  "homepage": "https://github.com/alightedlamp/devdash#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "mysql2": "^1.5.2",
+    "sequelize": "^4.33.4"
+  }
+}
