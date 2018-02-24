@@ -1,3 +1,3 @@
 # Yhtz
 
-That - a Yahtzee-inspired game.
+Yhtz - a Yahtzee-inspired game.
