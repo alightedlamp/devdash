@@ -1,3 +1,3 @@
-# Yhtz
+# DevDash
 
-Yhtz - a Yahtzee-inspired game.
+A developer progress and project progress dashboard for encouraging developing developers to keep developing.
