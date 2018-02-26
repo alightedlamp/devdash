@@ -9,6 +9,39 @@ const keys = require('./config/keys');
 const PORT = process.env.PORT || 3000;
 const app = express();
 
+const GitHubStrategy = require('passport-github').Strategy;
+passport.use(
+  new GitHubStrategy(
+    {
+      clientID: keys.github.id,
+      clientSecret: keys.github.secret,
+      callbackURL: 'https://devprogdash.herokuapp.com/auth'
+    },
+    function(accessToken, refreshToken, profile, cb) {
+      User.findOrCreate({ githubId: profile.id }, function(err, user) {
+        return cb(err, user);
+      });
+    }
+  )
+);
+
+// In order to restore authentication state across HTTP requests, Passport needs
+// to serialize users into and deserialize users out of the session.
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
+// Initialize Passport and restore authentication state, if any, from the
+// session.
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
