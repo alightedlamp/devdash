@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--public/assets/css/devdash.css-->
+	<!-- Bulma -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../public/assets/css/devdash2.css" type="text/css" />
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    <!-- Javascript -->
+    <script src="/assets/js/devdash.js"></script>
+
+    <title>Devdash</title>
+
+</head>
+
+<body>
+
+<div class="container">
+
+	<!-- Nav Container -->
+	<nav class="level">
+
+	  <!-- Left Side -->
+	  <div class="level-left">
+	    <div class="level-item">
+	      <p class="subtitle is-3">
+	        <strong>Devdash</strong>
+	      </p>
+	    </div>
+	  </div>
+
+	  <!-- Right side -->
+	  <div class="level-right">
+
+	  	<!-- Username -->
+	  	<p class="level-item">
+	  		<div class="field">
+  	  			<p class="control has-icons-left has-icons-right">
+      				<input class="input" type="email" placeholder="Email">
+      					<span class="icon is-small is-left">
+      						<i class="fas fa-envelope"></i>
+      					</span>
+      					<span class="icon is-small is-right">
+      						<i class="fas fa-check"></i>
+      					</span>
+      			</p>
+      		</div>
+      </p>
+	    
+	    <!-- Password -->
+	    <p class="level-item">
+	    	<div class="field">
+  				<p class="control has-icons-left">
+    				<input class="input" type="password" placeholder="Password">
+    					<span class="icon is-small is-left">
+      						<i class="fas fa-lock"></i>
+    					</span>
+  				</p>
+			</div>
+		</p>
+	    
+	    <!-- Login Button -->
+	    <p class="level-item">
+	    	<div class="field">
+  				<p class="control">
+    				<button class="button is-success">
+      					Login
+    				</button>
+  				</p>
+			</div>
+		</p>
+
+	  </div>
+
+	</nav>
+	
+	<!-- Project Column -->
+	<div class="columns">
+		<div class="column"></div>
+
+  		<div class="column is-5 card">
+		<div class="dropdown is-active">
+  			<div class="dropdown-trigger">
+    			<button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+      				<span><strong>Projects</strong></span>
+      				<span class="icon is-small">
+        				<i class="fas fa-angle-down" aria-hidden="true"></i>
+      				</span>
+    			</button>
+  			</div>
+  		<div class="dropdown-menu" id="dropdown-menu2" role="menu">
+    	<div class="dropdown-content">
+      	<div class="dropdown-item">
+        	<p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
+      	</div>
+      		<hr class="dropdown-divider">
+      	<div class="dropdown-item">
+        	<p>You simply need to use a <code>&lt;div&gt;</code> instead.</p>
+      	</div>
+      		<hr class="dropdown-divider">
+      	<a href="#" class="dropdown-item">
+        This is a link
+      	</a>
+    	</div>
+  		</div>
+		</div>
+
+		</div>
+
+		<!-- Resources -->
+  		<div class="column is-5 card"><strong>Resources</strong>
+			<div class="card">
+	  					<header class="card-header">
+	    					<p class="card-header-title">Article #1</p>
+	    						<a href="#" class="card-header-icon" aria-label="more options">
+	      							<span class="icon">
+	        							<i class="fas fa-angle-down" aria-hidden="true"></i>
+	      							</span>
+	    						</a>
+	  					</header>
+	  					<div class="card-content">
+	    					<div class="content">
+	      						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+	      							<a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
+	      								<br>
+	      							<time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+	    					</div>
+	  					</div>
+	  					<footer class="card-footer">
+	    					<a href="#" class="card-footer-item">Save</a>
+	    					<a href="#" class="card-footer-item">Edit</a>
+	    					<a href="#" class="card-footer-item">Delete</a>
+	  					</footer>
+					</div>
+			<div class="card">
+  					<header class="card-header">
+    					<p class="card-header-title">Article #2</p>
+    						<a href="#" class="card-header-icon" aria-label="more options">
+      							<span class="icon">
+        							<i class="fas fa-angle-down" aria-hidden="true"></i>
+      							</span>
+    						</a>
+  					</header>
+  					<div class="card-content">
+    					<div class="content">
+      						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+      							<a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
+      								<br>
+      							<time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+    					</div>
+  					</div>
+  					<footer class="card-footer">
+    					<a href="#" class="card-footer-item">Save</a>
+    					<a href="#" class="card-footer-item">Edit</a>
+    					<a href="#" class="card-footer-item">Delete</a>
+  					</footer>
+				</div>
+
+	  		</div>
+
+		<div class="column"></div>
+	</div>
+
+	<!-- Footer Column -->
+	<div class="columns">
+		
+		<div class="column"></div>
+		<div class="column is-10 card">Filler Content</div>
+		<div class="column"></div>
+
+	</div>
+
+</div>
+
+</body>
+
+</html>
