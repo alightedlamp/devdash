@@ -16,8 +16,11 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     completed: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        isDate: true
+      }
     },
     priority: {
       type: DataTypes.TINYINT,

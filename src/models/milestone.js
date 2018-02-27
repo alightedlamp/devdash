@@ -13,6 +13,13 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         isDate: true  // only allow date strings
       }
+    },
+    completed_date: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        isDate: true
+      }
     }
   });
   return Milestone;
