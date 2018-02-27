@@ -1,7 +1,8 @@
 const express = require('express');
-const expressHandlebars = require('express-handlebars');
-const bodyParser = require('body-parser');
+const session = require('express-session');
 const passport = require('passport');
+const bodyParser = require('body-parser');
+const expressHandlebars = require('express-handlebars');
 
 require('dotenv').config();
 const keys = require('./config/keys');
@@ -37,17 +38,17 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-// Initialize Passport and restore authentication state, if any, from the
-// session.
+app.use(session({ secret: 'keyboard cat' }));
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static('public'));
+
+const user = require('./controllers/user.js');
+app.use('/user', user);
 
 app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
-
-app.use(express.static('public'));
 
 app.listen(PORT, () => console.log(`App running on port ${PORT}`));
