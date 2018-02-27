@@ -1,0 +1,17 @@
+{{!-- Body of built out dashboard page --}}
+
+{{!-- Projects list --}}
+<ul>
+  {{#each project}}
+      {{> project-block}}
+  {{/each}}
+</ul>
+
+{{!-- Resources list --}}
+<ul>
+  {{#each resource}}
+    {{#unless devoured}}
+      {{> resource-block}}
+    {{/unless}}
+  {{/each}}
+</ul>
