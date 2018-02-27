@@ -26,7 +26,7 @@ passport.use(
   )
 );
 
-app.use(session({ secret: 'keyboard cat' }));
+app.use(session({ secret: keys.sessionSecret }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.urlencoded({ extended: false }));
