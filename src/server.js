@@ -26,6 +26,13 @@ passport.use(
   )
 );
 
+app.use(session({ secret: 'keyboard cat' }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(express.static('public'));
+
 // In order to restore authentication state across HTTP requests, Passport needs
 // to serialize users into and deserialize users out of the session.
 passport.serializeUser(function(user, done) {
@@ -37,13 +44,6 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
-
-app.use(session({ secret: 'keyboard cat' }));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(express.static('public'));
 
 const user = require('./controllers/user.js');
 app.use('/user', user);
