@@ -46,8 +46,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+const root = require('./controllers/root.js');
+app.use('/', root);
+
+const project = require('./controllers/project.js');
+app.use('/project', project);
+
+const dashboard = require('./controllers/dashboard.js');
+app.use('/dashboard', dashboard);
+
 const user = require('./controllers/user.js');
 app.use('/user', user);
+
+const resource = require('./controllers/resource.js');
+app.use('/resource', resource);
 
 app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
