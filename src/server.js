@@ -51,12 +51,14 @@ app.use('/', root);
 const project = require('./controllers/project.js');
 app.use('/project', project);
 
-// Pages below are not needed. Rather than deleting them, I'm stubbing them out in case they're ever needed in the future.
-// const resource = require('./controllers/resource.js');
-// app.use('/resource', resource);
+const dashboard = require('./controllers/dashboard.js');
+app.use('/dashboard', dashboard);
 
-// const user = require('./controllers/user.js');
-// app.use('/user', user);
+const user = require('./controllers/user.js');
+app.use('/user', user);
+
+const resource = require('./controllers/resource.js');
+app.use('/resource', resource);
 
 app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
