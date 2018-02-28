@@ -17,7 +17,7 @@ passport.use(
     {
       clientID: keys.github.id,
       clientSecret: keys.github.secret,
-      callbackURL: 'https://178a9b76.ngrok.io/user/auth/github/callback'
+      callbackURL: 'https://7aba3bd3.ngrok.io/user/auth/github/callback'
     },
     function(accessToken, refreshToken, profile, done) {
       const options = {
@@ -38,17 +38,6 @@ passport.use(
   )
 );
 
-// Middleware used in routes to determine if a user is logged in
-const ensureAuthenticated = function(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next(); 
-  }
-  res.redirect('/')
-}
-app.use(ensureAuthenticated);
-
-// In order to restore authentication state across HTTP requests, Passport needs
-// to serialize users into and deserialize users out of the session.
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
@@ -68,21 +57,7 @@ app.use(passport.session());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
-
-const root = require('./controllers/root.js');
-app.use('/', root);
-
-const project = require('./controllers/project.js');
-app.use('/project', project);
-
-const dashboard = require('./controllers/dashboard.js');
-app.use('/dashboard', dashboard);
-
-const user = require('./controllers/user.js');
-app.use('/user', user);
-
-const resource = require('./controllers/resource.js');
-app.use('/resource', resource);
+app.use(require('./controllers'));
 
 app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');

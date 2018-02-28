@@ -1,12 +1,16 @@
 module.exports = function(sequelize, DataTypes) {
-  var Project = sequelize.define("Project", {
+  var Project = sequelize.define('Project', {
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     title: {
-    	type: DataTypes.STRING,
-    	allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
       validate: {
-    	  len: [2, 140]
+        len: [2, 140]
       }
-	  },
+    },
     progress: {
       type: DataTypes.TINYINT,
       defaultValue: 0,
@@ -15,9 +19,9 @@ module.exports = function(sequelize, DataTypes) {
         max: 100
       }
     },
-    completed: {
+    completed_at: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
       validate: {
         isDate: true
       }
@@ -30,15 +34,14 @@ module.exports = function(sequelize, DataTypes) {
 
   Project.associate = function(models) {
     Project.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
+      foreignKey: 'user_id',
+      targetKey: 'id'
     });
   };
 
   Project.associate = function(models) {
     Project.hasMany(models.Milestone, {
-      onDelete: "cascade"
+      onDelete: 'cascade'
     });
   };
 

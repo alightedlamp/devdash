@@ -2,9 +2,24 @@ const Sequelize = require('sequelize');
 const express = require('express');
 const passport = require('passport');
 const router = express.Router();
+const db = require('../models');
+const ensureAuthenticated = require('../util/helpers').ensureAuthenticated;
 
-router.get('/', (req, res) => {
-  console.log('in /resource/ root')
-  res.send('<p>This is test content. The page is \'/resource/\'. That is, it is the top of the resource hierarchy.</p>')
+router.get('/', ensureAuthenticated, (req, res) => {
+  // TO DO: Figure out if this actually works
+  const q = { where: { id: req.user.id } };
+  const projectsPromise = db.Project.findAll(q);
+  const resourcesPromise = db.Resource.findAll(q);
+
+  Promise.all([projectsPromise, resourcesPromise])
+    .then(data => {
+      res.render('dashboard', {
+        user: req.user,
+        data: data
+      });
+    })
+    .catch(err =>
+      res.status(500).render('index', { error: 'Error retrieving data' })
+    );
 });
 module.exports = router;
