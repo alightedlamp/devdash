@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bulma -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../public/css/devdash2.css" type="text/css" />
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    <!-- Javascript -->
+    <script src="../public/js/devdash.js"></script>
+
+    <title>Devdash</title>
+
+</head>
+
+<body>
+
+<div class="container">
+
+	<!-- Nav Container -->
+	<nav class="level">
+
+	  <!-- Left Side -->
+	  <div class="level-left">
+	    <div class="level-item">
+	      <p class="subtitle is-3">
+	        <strong>Devdash</strong>
+	      </p>
+	    </div>
+	  </div>
+
+	  <!-- Right side -->
+	  <div class="level-right">
+
+	  	<!-- Username -->
+	  	<p class="level-item">
+	  		<div class="field" id="form_id">
+  	  			<p class="control has-icons-left has-icons-right">
+      				<input class="input" id="email" type="email" placeholder="Email">
+      					<span class="icon is-small is-left">
+      						<i class="fas fa-envelope"></i>
+      					</span>
+      					<span class="icon is-small is-right">
+      						<i class="fas fa-check"></i>
+      					</span>
+      			</p>
+      		</div>
+      </p>
+	    
+	    <!-- Password -->
+	    <p class="level-item">
+	    	<div class="field" id="form_id">
+  				<p class="control has-icons-left">
+    				<input class="input" id="password" type="password" placeholder="Password">
+    					<span class="icon is-small is-left">
+      						<i class="fas fa-lock"></i>
+    					</span>
+  				</p>
+			</div>
+		</p>
+	    
+	    <!-- Login Button -->
+	    <p class="level-item">
+	    	<div class="field">
+  				<p class="control">
+    				<button class="button is-success" onclick="submitLogin()">
+      					Login
+    				</button>
+  				</p>
+			</div>
+		</p>
+
+	  </div>
+
+	</nav>
+	
+	<!-- Project Column -->
+	<div class="columns">
+		<div class="column"></div>
+
+		<div class="column is-5 card">
+			<a href="#"><strong>Project List</strong></a>
+
+			<br><br>	
+			<div class="card">
+	  				<header class="card-header">
+	    					<p class="card-header-title">Passengr</p>
+	    						<a class="card-header-icon" aria-label="more options">
+									  <div class="dropdown is-inactive">
+										<div class="dropdown-trigger">
+										  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+											<span>Options</span>
+											<span class="icon is-small">
+											  <i class="fas fa-angle-down" aria-hidden="true"></i>
+											</span>
+										  </button>
+										</div>
+										<div class="dropdown-menu" id="dropdown-menu" role="menu">
+										  <div class="dropdown-content">
+											<a href="#" class="dropdown-item">
+											  Go to Project
+											</a>
+											<a class="dropdown-item">
+											  Edit
+											</a>
+											<hr class="dropdown-divider">
+											<a href="#" class="dropdown-item">
+											  Delete
+											</a>
+										  </div>
+										</div>
+									  </div>
+	    						</a>
+						  </header>
+						  
+					</div>
+				<div class="card">
+					<header class="card-header">
+	    					<p class="card-header-title">Yhtz</p>
+	    						<a class="card-header-icon" aria-label="more options">
+									  <div class="dropdown is-inactive">
+										<div class="dropdown-trigger">
+										  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+											<span>Options</span>
+											<span class="icon is-small">
+											  <i class="fas fa-angle-down" aria-hidden="true"></i>
+											</span>
+										  </button>
+										</div>
+										<div class="dropdown-menu" id="dropdown-menu" role="menu">
+										  <div class="dropdown-content">
+											<a href="#" class="dropdown-item">
+											  Go to Project
+											</a>
+											<a class="dropdown-item">
+											  Edit
+											</a>
+											<hr class="dropdown-divider">
+											<a href="#" class="dropdown-item">
+											  Delete
+											</a>
+										  </div>
+										</div>
+									  </div>
+	    						</a>
+	  					</header>
+					</div>
+
+					<div class="card">
+							<header class="card-header">
+								  <p class="card-header-title">Devdash</p>
+									  <a class="card-header-icon" aria-label="more options">
+											<div class="dropdown is-inactive">
+											  <div class="dropdown-trigger">
+												<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+												  <span>Options</span>
+												  <span class="icon is-small">
+													<i class="fas fa-angle-down" aria-hidden="true"></i>
+												  </span>
+												</button>
+											  </div>
+											  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+												<div class="dropdown-content">
+												  <a href="#" class="dropdown-item">
+													Go to Project
+												  </a>
+												  <a class="dropdown-item">
+													Edit
+												  </a>
+												  <hr class="dropdown-divider">
+												  <a href="#" class="dropdown-item">
+													Delete
+												  </a>
+												</div>
+											  </div>
+											</div>
+									  </a>
+							</header>
+					</div>
+
+
+					<div class="card">
+							<header class="card-header">
+								  <p class="card-header-title">Project #4</p>
+									  <a class="card-header-icon" aria-label="more options">
+											<div class="dropdown is-inactive">
+											  <div class="dropdown-trigger">
+												<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+												  <span>Options</span>
+												  <span class="icon is-small">
+													<i class="fas fa-angle-down" aria-hidden="true"></i>
+												  </span>
+												</button>
+											  </div>
+											  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+												<div class="dropdown-content">
+												  <a href="#" class="dropdown-item">
+													Go to Project
+												  </a>
+												  <a class="dropdown-item">
+													Edit
+												  </a>
+												  <hr class="dropdown-divider">
+												  <a href="#" class="dropdown-item">
+													Delete
+												  </a>
+												</div>
+											  </div>
+											</div>
+									  </a>
+							</header>
+					</div>	
+		</div>
+
+		<!-- Resources -->
+		  <div class="column is-5 card">
+			  <a href="#"><strong>Resource List</strong></a>
+
+			<br><br>
+			<div class="card">
+	  				<header class="card-header">
+	    					<p class="card-header-title">Testing</p>
+	    						<a class="card-header-icon" aria-label="more options">
+									  <div class="dropdown is-inactive">
+										<div class="dropdown-trigger">
+										  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+											<span>Options</span>
+											<span class="icon is-small">
+											  <i class="fas fa-angle-down" aria-hidden="true"></i>
+											</span>
+										  </button>
+										</div>
+										<div class="dropdown-menu" id="dropdown-menu" role="menu">
+										  <div class="dropdown-content">
+											<a href="#" class="dropdown-item">
+											  Go to Article
+											</a>
+											<a class="dropdown-item">
+											  Edit
+											</a>
+											<hr class="dropdown-divider">
+											<a href="#" class="dropdown-item">
+											  Delete
+											</a>
+										  </div>
+										</div>
+									  </div>
+	    						</a>
+	  					</header>
+					</div>
+
+					<div class="card">
+							<header class="card-header">
+								  <p class="card-header-title">More Testing</p>
+									  <a class="card-header-icon" aria-label="more options">
+											<div class="dropdown is-inactive">
+											  <div class="dropdown-trigger">
+												<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+												  <span>Options</span>
+												  <span class="icon is-small">
+													<i class="fas fa-angle-down" aria-hidden="true"></i>
+												  </span>
+												</button>
+											  </div>
+											  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+												<div class="dropdown-content">
+												  <a href="#" class="dropdown-item">
+													Go to Article
+												  </a>
+												  <a class="dropdown-item">
+													Edit
+												  </a>
+												  <hr class="dropdown-divider">
+												  <a href="#" class="dropdown-item">
+													Delete
+												  </a>
+												</div>
+											  </div>
+											</div>
+									  </a>
+							</header>
+					</div>
+
+					<div class="card">
+							<header class="card-header">
+								  <p class="card-header-title">Karma</p>
+									  <a class="card-header-icon" aria-label="more options">
+											<div class="dropdown is-inactive">
+											  <div class="dropdown-trigger">
+												<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+												  <span>Options</span>
+												  <span class="icon is-small">
+													<i class="fas fa-angle-down" aria-hidden="true"></i>
+												  </span>
+												</button>
+											  </div>
+											  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+												<div class="dropdown-content">
+												  <a href="#" class="dropdown-item">
+													Go to Article
+												  </a>
+												  <a class="dropdown-item">
+													Edit
+												  </a>
+												  <hr class="dropdown-divider">
+												  <a href="#" class="dropdown-item">
+													Delete
+												  </a>
+												</div>
+											  </div>
+											</div>
+									  </a>
+							</header>
+					</div>
+
+
+					<div class="card">
+							<header class="card-header">
+								  <p class="card-header-title">Even More Testing</p>
+									  <a class="card-header-icon" aria-label="more options">
+											<div class="dropdown is-inactive">
+											  <div class="dropdown-trigger">
+												<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+												  <span>Options</span>
+												  <span class="icon is-small">
+													<i class="fas fa-angle-down" aria-hidden="true"></i>
+												  </span>
+												</button>
+											  </div>
+											  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+												<div class="dropdown-content">
+												  <a href="#" class="dropdown-item">
+													Go to Article
+												  </a>
+												  <a class="dropdown-item">
+													Edit
+												  </a>
+												  <hr class="dropdown-divider">
+												  <a href="#" class="dropdown-item">
+													Delete
+												  </a>
+												</div>
+											  </div>
+											</div>
+									  </a>
+							</header>
+					</div>
+
+			</div>
+		<div class="column"></div>
+	</div>
+
+	<!-- Footer Column -->
+	<div class="columns">
+		
+		<div class="column"></div>
+		<div class="column is-10 card">Filler Content</div>
+		<div class="column"></div>
+
+	</div>
+
+</div>
+
+<script>
+
+	$(".dropdown").click(function() {
+	$(this).toggleClass('is-active');
+	})
+	
+</script>
+</body>
+
+</html>

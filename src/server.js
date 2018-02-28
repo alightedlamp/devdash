@@ -62,5 +62,5 @@ app.set('view engine', 'handlebars');
 db.sequelize
   .sync({ force: true })
   .then(() =>
-    app.listen(PORT, () => console.log(`App running on port ${PORT}`))
+    app.listen(PORT, () => console.log(`App running on port ${PORT} The time is: ${Date.now()}`))
   );
