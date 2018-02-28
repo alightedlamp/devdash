@@ -1,8 +1,10 @@
+process.env.NODE_ENV = 'test';
+
 const expect = require('chai').expect;
 const user = require('../src/controllers/user');
 const server = require('../src/server.js');
 
-describe('User routes', function() {
+describe('User', function() {
   it('Should render pages successfully', function() {});
 
   it('should produce applicable errors on failed requests', function() {});

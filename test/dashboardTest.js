@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'test';
+
 const expect = require('chai').expect;
 const dashboard = require('../src/controllers/dashboard');
 const server = require('../src/server.js');

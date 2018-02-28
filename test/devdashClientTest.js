@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'test';
+
 const expect = require('chai').expect;
 const script = require('../src/public/js/devdash.js');
 

@@ -1,8 +1,10 @@
+process.env.NODE_ENV = 'test';
+
 const expect = require('chai').expect;
 const resource = require('../src/controllers/resource');
 const server = require('../src/server.js');
 
-describe('Resource Controller', function() {
+describe('Resource', function() {
   it('should render pages successfully', function() {});
 
   it('should produce applicable errors on failed requests', function() {});
