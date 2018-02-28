@@ -44,10 +44,7 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(id, done) {
   db.User.findById(id)
-    .then(user => {
-      console.log(user);
-      done(null, user);
-    })
+    .then(user => done(null, user))
     .catch(err => done(err, null));
 });
 

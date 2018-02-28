@@ -19,7 +19,7 @@ router.get('/', ensureAuthenticated, (req, res) => {
       });
     })
     .catch(err =>
-      res.status(500).render('index', { error: 'Error retrieving data' })
+      res.status(500).render('dashboard', { error: 'Error retrieving data' })
     );
 });
 module.exports = router;
