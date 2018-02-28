@@ -19,3 +19,7 @@
 	position: relative;
 	bottom: 0px;
 }
+
+progress {
+	margin-left: 10px;
+}
