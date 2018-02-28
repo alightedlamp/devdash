@@ -45,6 +45,15 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
+const root = require('./controllers/root.js');
+app.use('/', root);
+
+const project = require('./controllers/project.js');
+app.use('/project', project);
+
+const resource = require('./controllers/resource.js');
+app.use('/resource', resource);
+
 const user = require('./controllers/user.js');
 app.use('/user', user);
 
