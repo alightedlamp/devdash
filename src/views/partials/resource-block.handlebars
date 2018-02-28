@@ -1,3 +1,33 @@
-<li>
-	<a href="{{link}}">{{title}}</a><button class="delete" data-id="{{id}}">Delete</button>
-</li>
+{{!-- Begin resource repeating element --}}
+<div class="card">
+	<header class="card-header">
+		<p class="card-header-title"><a href="{{link}}">{{title}}</a></p>
+		<a class="card-header-icon" aria-label="more options">
+			<div class="dropdown is-inactive">
+				<div class="dropdown-trigger">
+					<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+						<span>Options</span>
+						<span class="icon is-small">
+							<i class="fas fa-angle-down" aria-hidden="true"></i>
+						</span>
+					</button>
+				</div>
+				<div class="dropdown-menu" id="dropdown-menu" role="menu">
+					<div class="dropdown-content">
+						<a href="#" class="dropdown-item">
+							Go to Article
+						</a>
+						<a href="#" class="dropdown-item editResource" data-id="{{id}}">
+							Edit
+						</a>
+						<hr class="dropdown-divider">
+						<a href="#" class="dropdown-item deleteResource" data-id="{{id}}">
+							Delete
+						</a>
+					</div>
+				</div>
+			</div>
+		</a>
+	</header>
+</div>
+{{!-- End repeating element --}}
