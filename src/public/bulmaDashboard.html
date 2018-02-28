@@ -44,9 +44,9 @@
 
 	  	<!-- Username -->
 	  	<p class="level-item">
-	  		<div class="field">
+	  		<div class="field" id="form_id">
   	  			<p class="control has-icons-left has-icons-right">
-      				<input class="input" type="email" placeholder="Email">
+      				<input class="input" id="email" type="email" placeholder="Email">
       					<span class="icon is-small is-left">
       						<i class="fas fa-envelope"></i>
       					</span>
@@ -59,9 +59,9 @@
 	    
 	    <!-- Password -->
 	    <p class="level-item">
-	    	<div class="field">
+	    	<div class="field" id="form_id">
   				<p class="control has-icons-left">
-    				<input class="input" type="password" placeholder="Password">
+    				<input class="input" id="password" type="password" placeholder="Password">
     					<span class="icon is-small is-left">
       						<i class="fas fa-lock"></i>
     					</span>
@@ -73,7 +73,7 @@
 	    <p class="level-item">
 	    	<div class="field">
   				<p class="control">
-    				<button class="button is-success">
+    				<button class="button is-success" onclick="submitLogin()">
       					Login
     				</button>
   				</p>
@@ -88,7 +88,10 @@
 	<div class="columns">
 		<div class="column"></div>
 
-		<div class="column is-5 card"><strong>Projects</strong>
+		<div class="column is-5 card">
+			<a href="#"><strong>Project List</strong></a>
+
+			<br><br>	
 			<div class="card">
 	  				<header class="card-header">
 	    					<p class="card-header-title">Passengr</p>
@@ -104,9 +107,38 @@
 										</div>
 										<div class="dropdown-menu" id="dropdown-menu" role="menu">
 										  <div class="dropdown-content">
-											<p class="dropdown-item">
-											Progress (100%)
-													  </p>
+											<a href="#" class="dropdown-item">
+											  Go to Project
+											</a>
+											<a class="dropdown-item">
+											  Edit
+											</a>
+											<hr class="dropdown-divider">
+											<a href="#" class="dropdown-item">
+											  Delete
+											</a>
+										  </div>
+										</div>
+									  </div>
+	    						</a>
+						  </header>
+						  
+					</div>
+				<div class="card">
+					<header class="card-header">
+	    					<p class="card-header-title">Yhtz</p>
+	    						<a href="#" class="card-header-icon" aria-label="more options">
+									  <div class="dropdown is-inactive">
+										<div class="dropdown-trigger">
+										  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+											<span>Options</span>
+											<span class="icon is-small">
+											  <i class="fas fa-angle-down" aria-hidden="true"></i>
+											</span>
+										  </button>
+										</div>
+										<div class="dropdown-menu" id="dropdown-menu" role="menu">
+										  <div class="dropdown-content">
 											<a href="#" class="dropdown-item">
 											  Go to Project
 											</a>
@@ -124,32 +156,82 @@
 	  					</header>
 					</div>
 
-				<!-- Pagination -->
-			<nav class="pagination" role="navigation" aria-label="pagination">
-				<a class="pagination-previous" title="This is the first page" disabled>Previous</a>
-				<a class="pagination-next">Next page</a>
-				<ul class="pagination-list">
-				  <li>
-					<a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
-				  </li>
-				  <li>
-					<a class="pagination-link" aria-label="Goto page 2">2</a>
-				  </li>
-				  <li>
-					<a class="pagination-link" aria-label="Goto page 3">3</a>
-				  </li>
-				</ul>
-			</nav>
+					<div class="card">
+							<header class="card-header">
+								  <p class="card-header-title">Devdash</p>
+									  <a href="#" class="card-header-icon" aria-label="more options">
+											<div class="dropdown is-inactive">
+											  <div class="dropdown-trigger">
+												<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+												  <span>Options</span>
+												  <span class="icon is-small">
+													<i class="fas fa-angle-down" aria-hidden="true"></i>
+												  </span>
+												</button>
+											  </div>
+											  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+												<div class="dropdown-content">
+												  <a href="#" class="dropdown-item">
+													Go to Project
+												  </a>
+												  <a class="dropdown-item">
+													Edit
+												  </a>
+												  <hr class="dropdown-divider">
+												  <a href="#" class="dropdown-item">
+													Delete
+												  </a>
+												</div>
+											  </div>
+											</div>
+									  </a>
+							</header>
+					</div>
 
+
+					<div class="card">
+							<header class="card-header">
+								  <p class="card-header-title">Project #4</p>
+									  <a href="#" class="card-header-icon" aria-label="more options">
+											<div class="dropdown is-inactive">
+											  <div class="dropdown-trigger">
+												<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+												  <span>Options</span>
+												  <span class="icon is-small">
+													<i class="fas fa-angle-down" aria-hidden="true"></i>
+												  </span>
+												</button>
+											  </div>
+											  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+												<div class="dropdown-content">
+												  <a href="#" class="dropdown-item">
+													Go to Project
+												  </a>
+												  <a class="dropdown-item">
+													Edit
+												  </a>
+												  <hr class="dropdown-divider">
+												  <a href="#" class="dropdown-item">
+													Delete
+												  </a>
+												</div>
+											  </div>
+											</div>
+									  </a>
+							</header>
+					</div>	
 		</div>
 
 		<!-- Resources -->
-  		<div class="column is-5 card"><strong>Resources</strong>
+		  <div class="column is-5 card">
+			  <a href="#"><strong>Resource List</strong></a>
+
+			<br><br>
 			<div class="card">
 	  				<header class="card-header">
 	    					<p class="card-header-title">Testing</p>
 	    						<a href="#" class="card-header-icon" aria-label="more options">
-									  <div class="dropdown is-active">
+									  <div class="dropdown is-inactive">
 										<div class="dropdown-trigger">
 										  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
 											<span>Options</span>
@@ -160,9 +242,6 @@
 										</div>
 										<div class="dropdown-menu" id="dropdown-menu" role="menu">
 										  <div class="dropdown-content">
-											<p class="dropdown-item">
-											Progress (0%)
-													  </p>
 											<a href="#" class="dropdown-item">
 											  Go to Article
 											</a>
@@ -182,7 +261,7 @@
 
 					<div class="card">
 							<header class="card-header">
-								  <p class="card-header-title">Article #2</p>
+								  <p class="card-header-title">More Testing</p>
 									  <a href="#" class="card-header-icon" aria-label="more options">
 											<div class="dropdown is-inactive">
 											  <div class="dropdown-trigger">
@@ -195,11 +274,8 @@
 											  </div>
 											  <div class="dropdown-menu" id="dropdown-menu" role="menu">
 												<div class="dropdown-content">
-												  <p class="dropdown-item">
-												  Progress (79%)
-															</p>
 												  <a href="#" class="dropdown-item">
-													Go to Project
+													Go to Article
 												  </a>
 												  <a class="dropdown-item">
 													Edit
@@ -212,25 +288,73 @@
 											  </div>
 											</div>
 									  </a>
-								</header>
-						  </div>
+							</header>
+					</div>
 
-				<!-- Pagination -->
-			<nav class="pagination" role="navigation" aria-label="pagination">
-				<a class="pagination-previous" title="This is the first page" disabled>Previous</a>
-				<a class="pagination-next">Next page</a>
-				<ul class="pagination-list">
-				  <li>
-					<a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
-				  </li>
-				  <li>
-					<a class="pagination-link" aria-label="Goto page 2">2</a>
-				  </li>
-				  <li>
-					<a class="pagination-link" aria-label="Goto page 3">3</a>
-				  </li>
-				</ul>
-			</nav>
+					<div class="card">
+							<header class="card-header">
+								  <p class="card-header-title">Karma</p>
+									  <a href="#" class="card-header-icon" aria-label="more options">
+											<div class="dropdown is-inactive">
+											  <div class="dropdown-trigger">
+												<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+												  <span>Options</span>
+												  <span class="icon is-small">
+													<i class="fas fa-angle-down" aria-hidden="true"></i>
+												  </span>
+												</button>
+											  </div>
+											  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+												<div class="dropdown-content">
+												  <a href="#" class="dropdown-item">
+													Go to Article
+												  </a>
+												  <a class="dropdown-item">
+													Edit
+												  </a>
+												  <hr class="dropdown-divider">
+												  <a href="#" class="dropdown-item">
+													Delete
+												  </a>
+												</div>
+											  </div>
+											</div>
+									  </a>
+							</header>
+					</div>
+
+
+					<div class="card">
+							<header class="card-header">
+								  <p class="card-header-title">Even More Testing</p>
+									  <a href="#" class="card-header-icon" aria-label="more options">
+											<div class="dropdown is-inactive">
+											  <div class="dropdown-trigger">
+												<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+												  <span>Options</span>
+												  <span class="icon is-small">
+													<i class="fas fa-angle-down" aria-hidden="true"></i>
+												  </span>
+												</button>
+											  </div>
+											  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+												<div class="dropdown-content">
+												  <a href="#" class="dropdown-item">
+													Go to Article
+												  </a>
+												  <a class="dropdown-item">
+													Edit
+												  </a>
+												  <hr class="dropdown-divider">
+												  <a href="#" class="dropdown-item">
+													Delete
+												  </a>
+												</div>
+											  </div>
+											</div>
+									  </a>
+							</header>
+					</div>
 
 			</div>
 		<div class="column"></div>
@@ -247,6 +371,13 @@
 
 </div>
 
+<script>
+
+	$(".dropdown").click(function() {
+	$(this).toggleClass('is-active');
+	})
+	
+</script>
 </body>
 
 </html>
