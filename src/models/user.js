@@ -16,8 +16,24 @@ module.exports = function(sequelize, DataTypes) {
     },
     avatar: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isUrl: true
+      }
     }
   });
+
+  User.associate = function(models) {
+    User.hasMany(models.Project, {
+      onDelete: "cascade"
+    });
+  };
+
+  User.associate = function(models) {
+    User.hasMany(models.Resource, {
+      onDelete: "cascade"
+    });
+  };
+
   return User;
 };

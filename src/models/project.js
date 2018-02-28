@@ -27,5 +27,20 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: 1
     }
   });
+
+  Project.associate = function(models) {
+    Project.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
+  Project.associate = function(models) {
+    Project.hasMany(models.Milestone, {
+      onDelete: "cascade"
+    });
+  };
+
   return Project;
 };

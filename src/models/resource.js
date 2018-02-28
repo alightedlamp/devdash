@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isUrl: true // checks for url format (http://foo.com)
+        isUrl: true // checks for url format
       }
     },
     completed: {
@@ -26,5 +26,14 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: 1
     }
   });
+
+  Resource.associate = function(models) {
+    Resource.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
   return Resource;
 };

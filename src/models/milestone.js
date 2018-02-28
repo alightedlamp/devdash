@@ -22,5 +22,14 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
+
+  Milestone.associate = function(models) {
+    Milestone.belongsTo(models.Project, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
   return Milestone;
 };
