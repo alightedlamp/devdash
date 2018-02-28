@@ -45,8 +45,18 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-const user = require('./controllers/user.js');
-app.use('/user', user);
+const root = require('./controllers/root.js');
+app.use('/', root);
+
+const project = require('./controllers/project.js');
+app.use('/project', project);
+
+// Pages below are not needed. Rather than deleting them, I'm stubbing them out in case they're ever needed in the future.
+// const resource = require('./controllers/resource.js');
+// app.use('/resource', resource);
+
+// const user = require('./controllers/user.js');
+// app.use('/user', user);
 
 app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
