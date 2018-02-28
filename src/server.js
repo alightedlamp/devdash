@@ -64,12 +64,12 @@ app.use('/resource', resource);
 app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-db.sequelize
-  .sync({ force: true })
-  .then(() =>
-    app.listen(PORT, () => console.log(`App running on port ${PORT}`))
-  );
-
 if (process.env.NODE_ENV === 'test') {
   module.exports = app.listen(PORT);
+} else {
+  db.sequelize
+    .sync({ force: true })
+    .then(() =>
+      app.listen(PORT, () => console.log(`App running on port ${PORT}`))
+    );
 }

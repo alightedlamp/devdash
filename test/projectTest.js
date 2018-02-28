@@ -12,12 +12,6 @@ const project = require('../src/controllers/project');
 const server = require('../src/server.js');
 
 describe('Project', function() {
-  // beforeEach(function(done) {
-  //   Project.remove({}, function(err) {
-  //     done();
-  //   });
-  // });
-
   it('should render pages successfully', function() {});
   it('should produce applicable errors on failed requests', function() {});
 
@@ -27,8 +21,8 @@ describe('Project', function() {
         .request(server)
         .get('/project')
         .end(function(err, res) {
-          res.should.have.status(200);
-          res.body.should.be.a('object');
+          expect(res).to.have.status(200);
+          expect(res.body).to.should.be.a('object');
           done();
         });
     });
@@ -36,17 +30,48 @@ describe('Project', function() {
     it('should return a 500 for an invalid id input', function() {});
   });
   describe('/POST project', function() {
-    it('should POST a new project', function() {});
+    it('should POST a new project', function(done) {
+      chai
+        .request(server)
+        .post('/project')
+        .send({
+          id: 1,
+          title: 'Test project',
+          createdAt: Date.now(),
+          updatedat: Date.now()
+        })
+        .end(function(err, res) {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
     it('should return a 401 for unathenticated user', function() {});
     it('should return a 500 for an invalid id input', function() {});
   });
   describe('/PUT project', function() {
-    it('should update the project', function() {});
+    it('should update the project', function() {
+      chai
+        .request(server)
+        .put('/project')
+        .send({})
+        .end(function(err, res) {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
     it('should return a 401 for unathenticated user', function() {});
     it('should return a 500 for an invalid id input', function() {});
   });
   describe('/DELETE project', function() {
-    it('should delete a project', function() {});
+    it('should delete a project', function() {
+      chai
+        .request(server)
+        .delete('/project')
+        .end(function(err, res) {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
     it('should return a 401 for unathenticated user', function() {});
     it('should return a 500 for an invalid id input', function() {});
   });
@@ -54,22 +79,56 @@ describe('Project', function() {
     it('should return all milestones for a project', function() {});
   });
   describe('/GET milestone', function() {
-    it('should get a milestone', function() {});
+    it('should get a milestone', function() {
+      chai
+        .request(server)
+        .get('/project/milestone')
+        .end(function(err, res) {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
     it('should return a 401 for unathenticated user', function() {});
     it('should return a 500 for an invalid id input', function() {});
   });
   describe('/POST milestone', function() {
-    it('should post a new milestone', function() {});
+    it('should post a new milestone', function() {
+      chai
+        .request(server)
+        .post('/project/milestone')
+        .send({})
+        .end(function(err, res) {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
     it('should return a 401 for unathenticated user', function() {});
     it('should return a 500 for an invalid id input', function() {});
   });
   describe('/PUT milestone', function() {
-    it('should update a milestone', function() {});
+    it('should update a milestone', function() {
+      chai
+        .request(server)
+        .put('/project/milestone')
+        .send({})
+        .end(function(err, res) {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
     it('should return a 401 for unathenticated user', function() {});
     it('should return a 500 for an invalid id input', function() {});
   });
   describe('/DELETE milestone', function() {
-    it('should delete a milestone', function() {});
+    it('should delete a milestone', function() {
+      chai
+        .request(server)
+        .delete('/project/milestone')
+        .end(function(err, res) {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
     it('should return a 401 for unathenticated user', function() {});
     it('should return a 500 for an invalid id input', function() {});
   });
