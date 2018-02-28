@@ -1,5 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
+    github_username: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    github_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     name: {
     	type: DataTypes.STRING,
     	allowNull: false,
