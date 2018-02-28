@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
 
 <head>
 
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--public/assets/css/devdash.css-->
+
 	<!-- Bulma -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../public/assets/css/devdash2.css" type="text/css" />
+    <link rel="stylesheet" href="../public/css/devdash2.css" type="text/css" />
 
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery.js"></script>
 
     <!-- Javascript -->
-    <script src="/assets/js/devdash.js"></script>
+    <script src="../public/js/devdash.js"></script>
 
     <title>Devdash</title>
 
@@ -88,86 +88,151 @@
 	<div class="columns">
 		<div class="column"></div>
 
-  		<div class="column is-5 card">
-		<div class="dropdown is-active">
-  			<div class="dropdown-trigger">
-    			<button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
-      				<span><strong>Projects</strong></span>
-      				<span class="icon is-small">
-        				<i class="fas fa-angle-down" aria-hidden="true"></i>
-      				</span>
-    			</button>
-  			</div>
-  		<div class="dropdown-menu" id="dropdown-menu2" role="menu">
-    	<div class="dropdown-content">
-      	<div class="dropdown-item">
-        	<p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
-      	</div>
-      		<hr class="dropdown-divider">
-      	<div class="dropdown-item">
-        	<p>You simply need to use a <code>&lt;div&gt;</code> instead.</p>
-      	</div>
-      		<hr class="dropdown-divider">
-      	<a href="#" class="dropdown-item">
-        This is a link
-      	</a>
-    	</div>
-  		</div>
-		</div>
+		<div class="column is-5 card"><strong>Projects</strong>
+			<div class="card">
+	  				<header class="card-header">
+	    					<p class="card-header-title">Passengr</p>
+	    						<a href="#" class="card-header-icon" aria-label="more options">
+									  <div class="dropdown is-inactive">
+										<div class="dropdown-trigger">
+										  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+											<span>Options</span>
+											<span class="icon is-small">
+											  <i class="fas fa-angle-down" aria-hidden="true"></i>
+											</span>
+										  </button>
+										</div>
+										<div class="dropdown-menu" id="dropdown-menu" role="menu">
+										  <div class="dropdown-content">
+											<p class="dropdown-item">
+											Progress (100%)
+													  </p>
+											<a href="#" class="dropdown-item">
+											  Go to Project
+											</a>
+											<a class="dropdown-item">
+											  Edit
+											</a>
+											<hr class="dropdown-divider">
+											<a href="#" class="dropdown-item">
+											  Delete
+											</a>
+										  </div>
+										</div>
+									  </div>
+	    						</a>
+	  					</header>
+					</div>
+
+				<!-- Pagination -->
+			<nav class="pagination" role="navigation" aria-label="pagination">
+				<a class="pagination-previous" title="This is the first page" disabled>Previous</a>
+				<a class="pagination-next">Next page</a>
+				<ul class="pagination-list">
+				  <li>
+					<a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
+				  </li>
+				  <li>
+					<a class="pagination-link" aria-label="Goto page 2">2</a>
+				  </li>
+				  <li>
+					<a class="pagination-link" aria-label="Goto page 3">3</a>
+				  </li>
+				</ul>
+			</nav>
 
 		</div>
 
 		<!-- Resources -->
   		<div class="column is-5 card"><strong>Resources</strong>
 			<div class="card">
-	  					<header class="card-header">
-	    					<p class="card-header-title">Article #1</p>
+	  				<header class="card-header">
+	    					<p class="card-header-title">Testing</p>
 	    						<a href="#" class="card-header-icon" aria-label="more options">
-	      							<span class="icon">
-	        							<i class="fas fa-angle-down" aria-hidden="true"></i>
-	      							</span>
+									  <div class="dropdown is-active">
+										<div class="dropdown-trigger">
+										  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+											<span>Options</span>
+											<span class="icon is-small">
+											  <i class="fas fa-angle-down" aria-hidden="true"></i>
+											</span>
+										  </button>
+										</div>
+										<div class="dropdown-menu" id="dropdown-menu" role="menu">
+										  <div class="dropdown-content">
+											<p class="dropdown-item">
+											Progress (0%)
+													  </p>
+											<a href="#" class="dropdown-item">
+											  Go to Article
+											</a>
+											<a class="dropdown-item">
+											  Edit
+											</a>
+											<hr class="dropdown-divider">
+											<a href="#" class="dropdown-item">
+											  Delete
+											</a>
+										  </div>
+										</div>
+									  </div>
 	    						</a>
 	  					</header>
-	  					<div class="card-content">
-	    					<div class="content">
-	      						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-	      							<a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-	      								<br>
-	      							<time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-	    					</div>
-	  					</div>
-	  					<footer class="card-footer">
-	    					<a href="#" class="card-footer-item">Save</a>
-	    					<a href="#" class="card-footer-item">Edit</a>
-	    					<a href="#" class="card-footer-item">Delete</a>
-	  					</footer>
 					</div>
-			<div class="card">
-  					<header class="card-header">
-    					<p class="card-header-title">Article #2</p>
-    						<a href="#" class="card-header-icon" aria-label="more options">
-      							<span class="icon">
-        							<i class="fas fa-angle-down" aria-hidden="true"></i>
-      							</span>
-    						</a>
-  					</header>
-  					<div class="card-content">
-    					<div class="content">
-      						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-      							<a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-      								<br>
-      							<time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-    					</div>
-  					</div>
-  					<footer class="card-footer">
-    					<a href="#" class="card-footer-item">Save</a>
-    					<a href="#" class="card-footer-item">Edit</a>
-    					<a href="#" class="card-footer-item">Delete</a>
-  					</footer>
-				</div>
 
-	  		</div>
+					<div class="card">
+							<header class="card-header">
+								  <p class="card-header-title">Article #2</p>
+									  <a href="#" class="card-header-icon" aria-label="more options">
+											<div class="dropdown is-inactive">
+											  <div class="dropdown-trigger">
+												<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+												  <span>Options</span>
+												  <span class="icon is-small">
+													<i class="fas fa-angle-down" aria-hidden="true"></i>
+												  </span>
+												</button>
+											  </div>
+											  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+												<div class="dropdown-content">
+												  <p class="dropdown-item">
+												  Progress (79%)
+															</p>
+												  <a href="#" class="dropdown-item">
+													Go to Project
+												  </a>
+												  <a class="dropdown-item">
+													Edit
+												  </a>
+												  <hr class="dropdown-divider">
+												  <a href="#" class="dropdown-item">
+													Delete
+												  </a>
+												</div>
+											  </div>
+											</div>
+									  </a>
+								</header>
+						  </div>
 
+				<!-- Pagination -->
+			<nav class="pagination" role="navigation" aria-label="pagination">
+				<a class="pagination-previous" title="This is the first page" disabled>Previous</a>
+				<a class="pagination-next">Next page</a>
+				<ul class="pagination-list">
+				  <li>
+					<a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
+				  </li>
+				  <li>
+					<a class="pagination-link" aria-label="Goto page 2">2</a>
+				  </li>
+				  <li>
+					<a class="pagination-link" aria-label="Goto page 3">3</a>
+				  </li>
+				</ul>
+			</nav>
+
+			</div>
 		<div class="column"></div>
 	</div>
 

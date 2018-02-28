@@ -14,3 +14,8 @@
 .card {
 	margin-bottom: 5px;
 }
+
+.pagination {
+	position: relative;
+	bottom: 0px;
+}
