@@ -17,15 +17,35 @@ passport.use(
     {
       clientID: keys.github.id,
       clientSecret: keys.github.secret,
-      callbackURL: 'https://devprogdash.herokuapp.com/auth'
+      callbackURL: 'https://178a9b76.ngrok.io/user/auth/github/callback'
     },
-    function(accessToken, refreshToken, profile, cb) {
-      User.findOrCreate({ githubId: profile.id }, function(err, user) {
-        return cb(err, user);
-      });
+    function(accessToken, refreshToken, profile, done) {
+      const options = {
+        where: {
+          github_id: profile.id
+        },
+        defaults: {
+          github_username: profile.username,
+          name: profile.displayName,
+          avatar: profile._json.avatar_url,
+          email: profile._json.email
+        }
+      };
+      db.User.findOrCreate(options)
+        .spread((user, created) => done(null, user))
+        .catch(err => done(err, null));
     }
   )
 );
+
+// Middleware used in routes to determine if a user is logged in
+const ensureAuthenticated = function(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next(); 
+  }
+  res.redirect('/')
+}
+app.use(ensureAuthenticated);
 
 // In order to restore authentication state across HTTP requests, Passport needs
 // to serialize users into and deserialize users out of the session.
@@ -34,9 +54,12 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
+  db.User.findById(id)
+    .then(user => {
+      console.log(user);
+      done(null, user);
+    })
+    .catch(err => done(err, null));
 });
 
 app.use(session({ secret: keys.sessionSecret }));
