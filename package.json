@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "mocha",
-    "start": "nodemon src/server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",

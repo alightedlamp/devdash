@@ -17,26 +17,35 @@ passport.use(
     {
       clientID: keys.github.id,
       clientSecret: keys.github.secret,
-      callbackURL: 'https://devprogdash.herokuapp.com/auth'
+      callbackURL: 'https://7aba3bd3.ngrok.io/user/auth/github/callback'
     },
-    function(accessToken, refreshToken, profile, cb) {
-      User.findOrCreate({ githubId: profile.id }, function(err, user) {
-        return cb(err, user);
-      });
+    function(accessToken, refreshToken, profile, done) {
+      const options = {
+        where: {
+          github_id: profile.id
+        },
+        defaults: {
+          github_username: profile.username,
+          name: profile.displayName,
+          avatar: profile._json.avatar_url,
+          email: profile._json.email
+        }
+      };
+      db.User.findOrCreate(options)
+        .spread((user, created) => done(null, user))
+        .catch(err => done(err, null));
     }
   )
 );
 
-// In order to restore authentication state across HTTP requests, Passport needs
-// to serialize users into and deserialize users out of the session.
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
+  db.User.findById(id)
+    .then(user => done(null, user))
+    .catch(err => done(err, null));
 });
 
 app.use(session({ secret: keys.sessionSecret }));
@@ -45,21 +54,7 @@ app.use(passport.session());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
-
-const root = require('./controllers/root.js');
-app.use('/', root);
-
-const project = require('./controllers/project.js');
-app.use('/project', project);
-
-const dashboard = require('./controllers/dashboard.js');
-app.use('/dashboard', dashboard);
-
-const user = require('./controllers/user.js');
-app.use('/user', user);
-
-const resource = require('./controllers/resource.js');
-app.use('/resource', resource);
+app.use(require('./controllers'));
 
 app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');

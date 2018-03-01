@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("User", {
+  var User = sequelize.define('User', {
     github_username: {
       type: DataTypes.STRING,
       allowNull: false
@@ -9,15 +9,15 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     name: {
-    	type: DataTypes.STRING,
-    	allowNull: false,
-      validate: {
-    	  len: [2, 140]
-      }
-	  },
-    email: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: [2, 140]
+      }
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: true,
       validate: {
         isEmail: true
       }
@@ -33,13 +33,13 @@ module.exports = function(sequelize, DataTypes) {
 
   User.associate = function(models) {
     User.hasMany(models.Project, {
-      onDelete: "cascade"
+      onDelete: 'cascade'
     });
   };
 
   User.associate = function(models) {
     User.hasMany(models.Resource, {
-      onDelete: "cascade"
+      onDelete: 'cascade'
     });
   };
 

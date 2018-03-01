@@ -1,12 +1,16 @@
 module.exports = function(sequelize, DataTypes) {
-  var Resource = sequelize.define("Resource", {
+  var Resource = sequelize.define('Resource', {
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     title: {
-    	type: DataTypes.STRING,
-    	allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
       validate: {
-    	  len: [2, 140]
+        len: [2, 140]
       }
-	  },
+    },
     url: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -29,9 +33,8 @@ module.exports = function(sequelize, DataTypes) {
 
   Resource.associate = function(models) {
     Resource.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
+      foreignKey: 'user_id',
+      targetKey: 'id'
     });
   };
 
