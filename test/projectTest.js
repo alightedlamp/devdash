@@ -22,7 +22,7 @@ describe('Project', function() {
         .get('/project')
         .end(function(err, res) {
           expect(res).to.have.status(200);
-          expect(res.body).to.should.be.a('object');
+          expect(res.body).to.be.a('object');
           done();
         });
     });
@@ -35,13 +35,13 @@ describe('Project', function() {
         .request(server)
         .post('/project')
         .send({
-          id: 1,
-          title: 'Test project',
-          createdAt: Date.now(),
-          updatedat: Date.now()
+          user_id: 1,
+          title: 'Test project'
         })
         .end(function(err, res) {
           expect(res).to.have.status(200);
+          expect(res.body).to.be.a('object');
+          expect(res.body.title).to.equal('Test project');
           done();
         });
     });
@@ -53,9 +53,15 @@ describe('Project', function() {
       chai
         .request(server)
         .put('/project')
-        .send({})
+        .send({
+          id: 1,
+          user_id: 1,
+          title: 'New test project'
+        })
         .end(function(err, res) {
           expect(res).to.have.status(200);
+          expect(res.body).to.be.a('object');
+          expect(res.body.title).to.equal('New test project');
           done();
         });
     });
@@ -67,8 +73,13 @@ describe('Project', function() {
       chai
         .request(server)
         .delete('/project')
+        .send({
+          id: 1,
+          user_id: 1
+        })
         .end(function(err, res) {
           expect(res).to.have.status(200);
+          expect(res.body).to.be.a('object');
           done();
         });
     });
@@ -85,6 +96,7 @@ describe('Project', function() {
         .get('/project/milestone')
         .end(function(err, res) {
           expect(res).to.have.status(200);
+          expect(res.body).to.be.a('object');
           done();
         });
     });
@@ -96,9 +108,15 @@ describe('Project', function() {
       chai
         .request(server)
         .post('/project/milestone')
-        .send({})
+        .send({
+          title: 'Test milestone',
+          target_completion_date: '2018-03-03',
+          project_id: 1
+        })
         .end(function(err, res) {
           expect(res).to.have.status(200);
+          expect(res.body).to.be.a('object');
+          expect(res.body.title).to.equal('Test milestone');
           done();
         });
     });
@@ -110,9 +128,15 @@ describe('Project', function() {
       chai
         .request(server)
         .put('/project/milestone')
-        .send({})
+        .send({
+          title: 'New test milestone',
+          target_completion_date: '2018-03-03',
+          project_id: 1
+        })
         .end(function(err, res) {
           expect(res).to.have.status(200);
+          expect(res.body).to.be.a('object');
+          expect(res.body.title).to.equal('New test milestone');
           done();
         });
     });
@@ -124,6 +148,10 @@ describe('Project', function() {
       chai
         .request(server)
         .delete('/project/milestone')
+        .send({
+          id: 1,
+          project_id: 1
+        })
         .end(function(err, res) {
           expect(res).to.have.status(200);
           done();
