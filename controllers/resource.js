@@ -12,21 +12,21 @@ router.get('/', (req, res) => {
   );
 });
 
-router.post('/API/resource', (req, res) => {
+router.post('/', (req, res) => {
   console.log('in /resource/ root');
   res.send(
     "<p>This is test content. The page is '/resource/'. That is, it is the top of the resource hierarchy.</p>"
   );
 });
 
-router.put('/API/resource', (req, res) => {
+router.put('/:resourceId', (req, res) => {
   console.log('in /resource/ root');
   res.send(
     "<p>This is test content. The page is '/resource/'. That is, it is the top of the resource hierarchy.</p>"
   );
 });
 
-router.delete('/API/resource', (req, res) => {
+router.delete('/:resourceId', (req, res) => {
   console.log('in /resource/ root');
   res.send(
     "<p>This is test content. The page is '/resource/'. That is, it is the top of the resource hierarchy.</p>"
