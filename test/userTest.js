@@ -1,8 +1,8 @@
 process.env.NODE_ENV = 'test';
 
 const expect = require('chai').expect;
-const user = require('../src/controllers/user');
-const server = require('../src/server.js');
+const user = require('../controllers/user');
+const server = require('../server.js');
 
 describe('User', function() {
   it('Should render pages successfully', function() {});

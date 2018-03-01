@@ -25,12 +25,12 @@ router.post('/', ensureAuthenticated, (req, res) => {
     .catch(err => res.status(500).json(err));
 });
 
-router.put('/', (req, res) => {
+router.put('/:projectId', ensureAuthenticated, (req, res) => {
   console.log('in /API/project');
   res.send('in /API/project');
 });
 
-router.delete('/', (req, res) => {
+router.delete('/:projectId', ensureAuthenticated, (req, res) => {
   console.log('in /API/project');
   res.send('in /API/project');
 });
@@ -39,23 +39,22 @@ router.delete('/', (req, res) => {
 /////////////////////////////////////
 
 // List all milestones for a project
-router.get('/milestone/:ProjectID', (req, res) => {
+router.get('/milestone/:projectId', ensureAuthenticated, (req, res) => {
   console.log('in /project/milestone/:ProjectID' + req.params.ProjectID);
   res.send('in /project/milestone/:ProjectID' + req.params.ProjectID + '</p>');
 });
 
-router.post('/milestone', (req, res) => {
-  // Needs project ID in request body
+router.post('/milestone/:projectId', ensureAuthenticated, (req, res) => {
   console.log('in /API/project');
   res.send('in /API/project');
 });
 
-router.put('/milestone', (req, res) => {
+router.put('/milestone/:projectId', ensureAuthenticated, (req, res) => {
   console.log('in /API/project');
   res.send('in /API/project');
 });
 
-router.delete('/milestone', (req, res) => {
+router.delete('/milestone/:milestoneId', ensureAuthenticated, (req, res) => {
   console.log('in /API/project');
   res.send('in /API/project');
 });

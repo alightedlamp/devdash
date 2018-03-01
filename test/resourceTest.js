@@ -7,9 +7,9 @@ const should = chai.should();
 
 chai.use(chaiHttp);
 
-const Resource = require('../src/models/resource');
-const resource = require('../src/controllers/resource');
-const server = require('../src/server.js');
+const Resource = require('../models/resource');
+const resource = require('../controllers/resource');
+const server = require('../server.js');
 
 describe('Resource', function() {
   describe('/GET resource', function() {
@@ -40,7 +40,7 @@ describe('Resource', function() {
         .end(function(err, res) {
           expect(res).to.have.status(200);
           expect(res.body).to.be.a('object');
-          expect(res.body.title).to.be('Test resource');
+          expect(res.body.title).to.equal('Test resource');
           done();
         });
     });
@@ -61,7 +61,7 @@ describe('Resource', function() {
         .end(function(err, res) {
           expect(res).to.have.status(200);
           expect(res.body).to.be.a('object');
-          expect(res.body.title).to.be('New test resource');
+          expect(res.body.title).to.equal('New test resource');
           done();
         });
     });

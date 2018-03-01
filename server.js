@@ -17,7 +17,7 @@ passport.use(
     {
       clientID: keys.github.id,
       clientSecret: keys.github.secret,
-      callbackURL: 'https://7aba3bd3.ngrok.io/user/auth/github/callback'
+      callbackURL: 'https://47628ed4.ngrok.io/user/auth/github/callback'
     },
     function(accessToken, refreshToken, profile, done) {
       const options = {
@@ -65,6 +65,8 @@ if (process.env.NODE_ENV === 'test') {
   db.sequelize
     .sync({ force: true })
     .then(() =>
-      app.listen(PORT, () => console.log(`App running on port ${PORT}`))
+      app.listen(PORT, () =>
+        console.log(`App running on port ${PORT} at ${Date.now()}`)
+      )
     );
 }

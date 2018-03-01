@@ -7,14 +7,11 @@ const should = chai.should();
 
 chai.use(chaiHttp);
 
-const Project = require('../src/models/project');
-const project = require('../src/controllers/project');
-const server = require('../src/server.js');
+const Project = require('../models/project');
+const project = require('../controllers/project');
+const server = require('../server.js');
 
 describe('Project', function() {
-  it('should render pages successfully', function() {});
-  it('should produce applicable errors on failed requests', function() {});
-
   describe('/GET project', function() {
     it('should GET all the projects', function(done) {
       chai
@@ -86,6 +83,9 @@ describe('Project', function() {
     it('should return a 401 for unathenticated user', function() {});
     it('should return a 500 for an invalid id input', function() {});
   });
+
+  // Project-specific Milestone tests
+  /////////////////////////////////////
   describe('/GET /milestone/projectID', function() {
     it('should return all milestones for a project', function() {});
   });
