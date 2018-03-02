@@ -31,14 +31,11 @@
 				<a class="dropdown-item completeProject" data-id="{{id}}">
 					<span>Mark Completed</span>
 				</a>
-				<a class="dropdown-item addMilestone" data-id="{{id}}">
-					<span>Add Milestone</span>
-				</a>
 			</div>
 		</div>
 	</div>
-	
-	{{!-- Get all milestones for project id and display them.  --}}
-					{{#each milestone}} {{> milestone-block}} {{/each}}
+	<a href="/project/{{id}}" class="button">Go to Project</a>
+
+	{{!-- Get all milestones for project id and display them. --}} {{#each milestone}} {{> milestone-block}} {{/each}}
 </div>
 {{!-- end of repeating element --}}

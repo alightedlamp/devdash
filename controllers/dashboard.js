@@ -36,7 +36,6 @@ router.get('/', ensureAuthenticated, (req, res) => {
         resources: resourceData,
         githubData: githubData
       };
-      console.log(dashboardData.projects);
       res.render('dashboard', dashboardData);
     })
     .catch(err => {

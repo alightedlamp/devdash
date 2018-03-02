@@ -268,10 +268,8 @@ $(document).ready(function() {
   //     window.location.href = "/" = currentResource.id
   // }
 
-  function submitMilestone(Milestone) {
-    $.post('/api/milestone/', Milestone, function() {
-      window.location.href = '/bulmaDashboard.html';
-    });
+  function submitMilestone(milestone) {
+    $.post('/api/milestone/', milestone).then(() => location.reload());
   }
 
   // function handleDeleteMilestone() {
@@ -286,7 +284,7 @@ $(document).ready(function() {
     $.ajax({
       method: 'DELETE',
       url: '/milestone/' + id
-    }).then(function() {});
+    }).then(() => location.reload());
   }
 
   // function editMilestone(Milestone) {
