@@ -16,7 +16,49 @@
 						</p>
 						<a class="card-header-icon" aria-label="more options">
 							<div class="dropdown is-inactive">
-								<div class="dropdown-trigger">
+
+            <a class="button modal-button milestone-button" data-target="modal-ter">Add Milestone</a>
+            <div class="modal milestone-modal">
+              <div class="modal-background"></div>
+              <div class="modal-card">
+                <header class="modal-card-head">
+                  <p class="modal-card-title">Add a Milestone</p>
+                </header>
+                <section class="modal-card-body">
+
+                  <!-- Milestone Name Input -->
+                  <div class="field">
+                    <label class="label">Name of Milestone</label>
+                    <div class="control">
+                      <input class="input" type="text" placeholder="">
+                    </div>
+                  </div>
+
+                  <!-- Target Completion Date Input -->
+                  <div class="field">
+                      <label class="label">Target Completion Date</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="">
+                      </div>
+                    </div>
+
+                  <!-- Completed Date -->
+                  <div class="field">
+                      <label class="label">Completed Date</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="">
+                      </div>
+                    </div>
+
+                </section>
+                <footer class="modal-card-foot">
+                  <button class="button is-success">Save changes</button>
+                  <button class="button milestone-cancel">Cancel</button>
+                </footer>
+              </div>
+            </div>
+          </header>
+								{{!-- <div class="dropdown-trigger">
 									<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
 										<span>Add a Milestone</span>
 										<span class="icon is-small">
@@ -38,7 +80,7 @@
 										</a>
 									</div>
 								</div>
-							</div>
+							</div> --}}
 						</a>
 					</header>
 					{{#each milestone}} {{> milestone-block}} {{/each}}
