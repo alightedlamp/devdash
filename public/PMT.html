@@ -3,178 +3,231 @@
 
 <head>
 
-    <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- Bulma -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+  <!-- Bulma -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../public/css/devdash2.css" type="text/css" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="../public/css/devdash2.css" type="text/css" />
 
-    <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery.js"></script>
+  <!-- Jquery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
 
-    <!-- Javascript -->
-    <script src="../public/js/devdash.js"></script>
+  <!-- Javascript -->
+  <script src="../public/js/devdash.js"></script>
 
-    <title>Devdash - Project Page</title>
+  <title>Devdash - Project Page</title>
 
 </head>
 
 <body>
 
-<div class="container">
+  <div class="container">
 
-	<!-- Nav Container -->
-	<nav class="level">
+    <!-- Nav Container -->
+    <nav class="level">
 
-	  <!-- Left Side -->
-	  <div class="level-left">
-	    <div class="level-item">
-	      <p class="subtitle is-3">
-	        <strong>Devdash</strong>
-	      </p>
-	    </div>
-	  </div>
-
-	  <!-- Right side -->
-	  <div class="level-right">
-
-	    <!-- Login Button -->
-	    <p class="level-item">
-	    	<div class="field">
-  				<p class="control">
-                      <!-- Replace onclick value with correct routing -->
-    				<button class="button is-success" onclick="location.href='bulmaDashboard.html'">Return to Homepage</button>
-  				</p>
-			</div>
-		</p>
-
-	  </div>
-
-	</nav>
-	
-	<!-- Project Column -->
-	<div class="columns">
-		<div class="column"></div>
-
-		<div class="column is-10 card">
-			<strong>Devdash</strong>
-
-			<br><br>	
-			<div class="card">
-	  				<header class="card-header">
-
-                            <!-- Progress Bar -->
-	    					<p class="card-header-title">
-                                Progress <progress class="progress is-success" value="40" max="100">15%</progress></p>
-
-	    						<a class="card-header-icon" aria-label="more options">
-									  <div class="dropdown is-inactive">
-										<div class="dropdown-trigger">
-										  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-											<span>Options</span>
-											<span class="icon is-small">
-											  <i class="fas fa-angle-down" aria-hidden="true"></i>
-											</span>
-										  </button>
-										</div>
-										<div class="dropdown-menu" id="dropdown-menu" role="menu">
-										  <div class="dropdown-content">
-											<a href="#" class="dropdown-item">
-											  Add a Milestone
-											</a>
-											<a class="dropdown-item">
-											  Edit
-											</a>
-											<hr class="dropdown-divider">
-											<a href="#" class="dropdown-item">
-											  Delete
-											</a>
-										  </div>
-										</div>
-									  </div>
-	    						</a>
-                          </header>
-                          
-                        <!-- Milestone #1 -->
-						  <div class="card">
-                                <header class="card-header">
-                                  <p class="card-header-title milestoneTitle" id="1">
-                                    Milestone #1
-                                  </p>
-                                </header>
-                                <div class="card-content">
-                                  <div class="content">
-                                    Deleted Yhtz from our memory
-                                    <a href="#">#nogames</a> <a href="#">#success</a> <a href="#">#PTSD</a>
-                                    <br>
-                                    <time datetime="2018-2-1">12:09 PM - 1 February 2018</time>
-                                  </div>
-                                </div>
-                                <footer class="card-footer">
-                                  <a href="#" class="card-footer-item editMilestone" id="1">Edit</a>
-                                  <a href="#" class="card-footer-item deleteMilestone" id="1">Delete</a>
-                                </footer>
-                              </div>
-
-                            <!-- Milestone #2 -->
-                              <div class="card">
-                                    <header class="card-header">
-                                      <p class="card-header-title">
-                                        Milestone #2
-                                      </p>
-                                    </header>
-                                    <div class="card-content">
-                                      <div class="content">
-                                        Started the project.
-                                        <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#sendhelp</a>
-                                        <br>
-                                        <time datetime="2018-24-2">3:34 PM - 24 February 2018</time>
-                                      </div>
-                                    </div>
-                                    <footer class="card-footer">
-                                      <a href="#" class="card-footer-item">Edit</a>
-                                      <a href="#" class="card-footer-item">Delete</a>
-                                    </footer>
-                                  </div>
-
-                            <!-- Milestone #3 -->
-                                  <div class="card">
-                                        <header class="card-header">
-                                          <p class="card-header-title">
-                                            Milestone #3
-                                          </p>
-                                        </header>
-                                        <div class="card-content">
-                                          <div class="content">
-                                            Struggling to finish the project.
-                                            <a href="#">@bulmaio</a>. <a href="#">#mood</a> <a href="#">#lifealert</a>
-                                            <br>
-                                            <time datetime="2018-27-2">8:49 PM - 27 February 2018</time>
-                                          </div>
-                                        </div>
-                                        <footer class="card-footer">
-                                          <a href="#" class="card-footer-item">Edit</a>
-                                          <a href="#" class="card-footer-item">Delete</a>
-                                        </footer>
-                                      </div>
-					</div>
-		</div>
-		<div class="column"></div>
+      <!-- Left Side -->
+      <div class="level-left">
+        <div class="level-item">
+          <p class="subtitle is-3">
+            <strong>Devdash</strong>
+          </p>
         </div>
+      </div>
 
-</div>
+      <!-- Right side -->
+      <div class="level-right">
 
-<script>
+        <!-- Login Button -->
+        <p class="level-item">
+          <div class="field">
+            <p class="control">
+              <!-- Replace onclick value with correct routing -->
+              <button class="button is-success" onclick="location.href='bulmaDashboard.html'">Return to Homepage</button>
+            </p>
+          </div>
+        </p>
 
-	$(".dropdown").click(function() {
-	$(this).toggleClass('is-active');
+      </div>
+
+    </nav>
+
+    <!-- Project Column -->
+    <div class="columns">
+      <div class="column"></div>
+
+      <div class="column is-10 card">
+        <strong>Devdash</strong>
+
+        <br>
+        <br>
+        <div class="card">
+          <header class="card-header">
+
+            <!-- Progress Bar -->
+            <p class="card-header-title">
+              Progress
+              <progress class="progress is-success" value="40" max="100">15%</progress>
+            </p>
+
+            <a class="button modal-button milestone-button" data-target="modal-ter">Add Milestone</a>
+            <div class="modal milestone-modal">
+              <div class="modal-background"></div>
+              <div class="modal-card">
+                <header class="modal-card-head">
+                  <p class="modal-card-title">Add a Milestone</p>
+                </header>
+                <section class="modal-card-body">
+
+                  <!-- Milestone Name Input -->
+                  <div class="field">
+                    <label class="label">Name of Milestone</label>
+                    <div class="control">
+                      <input class="input" type="text" placeholder="">
+                    </div>
+                  </div>
+
+                  <!-- Target Completion Date Input -->
+                  <div class="field">
+                      <label class="label">Target Completion Date</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="">
+                      </div>
+                    </div>
+
+                  <!-- Completed Date -->
+                  <div class="field">
+                      <label class="label">Completed Date</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="">
+                      </div>
+                    </div>
+
+                </section>
+                <footer class="modal-card-foot">
+                  <button class="button is-success">Save changes</button>
+                  <button class="button milestone-cancel">Cancel</button>
+                </footer>
+              </div>
+            </div>
+          </header>
+
+          <!-- Milestone #1 -->
+          <div class="card">
+            <header class="card-header">
+              <p class="card-header-title">
+                Milestone #1
+              </p>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                Deleted Yhtz from our memory
+                <a href="#">#nogames</a>
+                <a href="#">#success</a>
+                <a href="#">#PTSD</a>
+                <br>
+                <time datetime="2018-2-1">12:09 PM - 1 February 2018</time>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a href="#" class="card-footer-item">Edit</a>
+              <a href="#" class="card-footer-item">Delete</a>
+            </footer>
+          </div>
+
+          <!-- Milestone #2 -->
+          <div class="card">
+            <header class="card-header">
+              <p class="card-header-title">
+                Milestone #2
+              </p>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                Started the project.
+                <a href="#">@bulmaio</a>.
+                <a href="#">#css</a>
+                <a href="#">#sendhelp</a>
+                <br>
+                <time datetime="2018-24-2">3:34 PM - 24 February 2018</time>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a href="#" class="card-footer-item">Edit</a>
+              <a href="#" class="card-footer-item">Delete</a>
+            </footer>
+          </div>
+
+          <!-- Milestone #3 -->
+          <div class="card">
+            <header class="card-header">
+              <p class="card-header-title">
+                Milestone #3
+              </p>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                Struggling to finish the project.
+                <a href="#">@bulmaio</a>.
+                <a href="#">#mood</a>
+                <a href="#">#lifealert</a>
+                <br>
+                <time datetime="2018-27-2">8:49 PM - 27 February 2018</time>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a href="#" class="card-footer-item">Edit</a>
+              <a href="#" class="card-footer-item">Delete</a>
+            </footer>
+          </div>
+        </div>
+      </div>
+      <div class="column"></div>
+    </div>
+
+  </div>
+
+  <script>
+    $(".dropdown").click(function () {
+      $(this).toggleClass('is-active');
+    })
+
+	$(".resource-button").click(function() {
+		$(".resource-modal").toggleClass('is-active');
 	})
-	
-</script>
+
+	$(".resource-cancel").click(function() {
+		$(".resource-modal").toggleClass('is-active');
+	})
+
+	$(".project-button").click(function() {
+		$(".project-modal").toggleClass('is-active');
+	})
+
+	$(".project-cancel").click(function() {
+		$(".project-modal").toggleClass('is-active');
+	})
+
+	$(".edit").click(function() {
+		$("edit-modal").toggleClass('is-active');
+	})
+
+	$('.edit-cancel').click(function() {
+		$(".edit-modal").toggleClass('is-active');
+  })
+  
+  $(".milestone-button").click(function() {
+    $(".milestone-modal").toggleClass('is-active');
+  })
+
+  $(".milestone-cancel").click(function() {
+    $(".milestone-modal").toggleClass("is-active");
+  })
+  </script>
 </body>
 
 </html>

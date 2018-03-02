@@ -52,7 +52,7 @@
 						<div class="dropdown is-inactive">
 							<div class="dropdown-trigger">
 								<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-									<span>Options</span>
+									<span>Add a Milestone</span>
 									<span class="icon is-small">
 										<i class="fas fa-angle-down" aria-hidden="true"></i>
 									</span>
@@ -92,4 +92,28 @@
 		$(this).toggleClass('is-active');
 	})
 
+
+	$(".project-button").click(function() {
+		$(".project-modal").toggleClass('is-active');
+	})
+
+	$(".project-cancel").click(function() {
+		$(".project-modal").toggleClass('is-active');
+	})
+
+	$(".edit").click(function() {
+		$("edit-modal").toggleClass('is-active');
+	})
+
+	$('.edit-cancel').click(function() {
+		$(".edit-modal").toggleClass('is-active');
+	})
+
+	$(".milestone-button").click(function() {
+	    $(".milestone-modal").toggleClass('is-active');
+  	})
+
+  	$(".milestone-cancel").click(function() {
+    	$(".milestone-modal").toggleClass("is-active");
+	})
 </script>
