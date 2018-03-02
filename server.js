@@ -1,7 +1,8 @@
-process.env.NODE_ENV = 'development';
-
 require('dotenv').config();
 const keys = require('./config/keys');
+
+process.env.NODE_ENV = keys.env || 'production';
+
 const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
@@ -15,14 +16,17 @@ const db = require('./models');
 
 if (process.env.NODE_ENV === 'development') {
   const LocalStrategy = require('passport-local').Strategy;
-  const username = 'alightedlamp';
+  const username = keys.github.username;
   passport.use(
     new LocalStrategy(function(username, password, done) {
-      console.log('searching for user');
-      db.User.findOne({ github_username: username }, function(err, user) {
-        console.log(user);
-        return done(null, user);
-      });
+      db.User.findOne(
+        {
+          github_username: username
+        },
+        function(err, user) {
+          return done(null, user);
+        }
+      );
     })
   );
 } else {
@@ -64,21 +68,42 @@ passport.deserializeUser(function(id, done) {
     .catch(err => done(err, null));
 });
 
-app.use(session({ secret: keys.sessionSecret }));
+app.use(
+  session({
+    secret: keys.sessionSecret
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use(require('./controllers'));
 
-app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }));
+app.engine(
+  'handlebars',
+  expressHandlebars({
+    defaultLayout: 'main'
+  })
+);
 app.set('view engine', 'handlebars');
 
-db.sequelize
-  .sync({ force: true })
-  .then(() =>
-    app.listen(PORT, () =>
-      console.log(`App running on port ${PORT} The time is: ${Date.now()}`)
-    )
-  );
+if (process.env.NODE_ENV === 'test') {
+  module.exports = db.sequelize
+    .sync({
+      force: true
+    })
+    .then(() => app.listen(PORT));
+} else {
+  db.sequelize
+    .sync()
+    .then(() =>
+      app.listen(PORT, () =>
+        console.log(`App running on port ${PORT} at ${Date.now()}`)
+      )
+    );
+}
