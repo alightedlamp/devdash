@@ -23,3 +23,24 @@
 progress {
 	margin-left: 10px;
 }
+
+#logo {
+	font-family: 'ABeeZee', sans-serif;
+}
+
+.dropdown {
+	margin: 10px;
+}
+
+.background {
+	background-color: #00d1b2;
+}
+
+body, html {
+	height: 100%;
+}
+
+.scroll {
+	overflow: scroll;
+	max-height: 400px;
+}
