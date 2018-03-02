@@ -27,8 +27,6 @@ $(document).ready(function() {
       title: $('#projectEditNameField').val()
     };
     submitEditedProject(object);
-    $('#projectEditIdField').val('');
-    $('#projectEditNameField').val('');
   });
 
   // The Submit button for the Add Project modal window must have ID "submitNewProject"
@@ -50,7 +48,6 @@ $(document).ready(function() {
       priority: $('#projectSubmitPriorityField').val()
     };
     submitNewProject(object);
-    $('#projectSubmitNameField').val('');
   });
 
   // ----------FOR RESOURCES------------
@@ -99,9 +96,6 @@ $(document).ready(function() {
       priority: ''
     };
     submitEditedResource(object);
-    $('#ResourceEditIdField').val('');
-    $('#ResourceEditTitleField').val('');
-    $('#ResourceEditURLField').val('');
   });
 
   $('.deleteResource').click(function() {
@@ -136,8 +130,6 @@ $(document).ready(function() {
     };
     var id = $('#milestoneSubmitProjectIdField').val();
     submitNewMilestone(object, projectId);
-    $('#milestoneSubmitTitleField').val('');
-    $('#milestoneSubmitProjectIdField').val('');
   });
 
   // THE MODAL FOR SUBMIT NEW MILESTONE HAS TO HAVE A HIDDEN FIELD FOR PROJECTID
@@ -148,9 +140,7 @@ $(document).ready(function() {
       title: $('#milestoneEditTitleField').val(),
       target_completion_date: ''
     };
-    var projectId = submitEditedMilestone(object);
-    $('#milestoneEditIdField').val('');
-    $('#milestoneEditTitleField').val('');
+    submitEditedMilestone(object);
   });
 
   $('.deleteMilestone').click(function() {
@@ -167,7 +157,7 @@ $(document).ready(function() {
       url: '/resource/' + object.id,
       data: object
     }).done(function(data) {
-      console.log(data);
+      location.reload();
     });
   }
 
@@ -184,7 +174,7 @@ $(document).ready(function() {
   function submitNewResource(object) {
     $.post('/resource', object, function(data) {
       console.log(data);
-    }).then(() => location.reload());
+    }).done(() => location.reload());
   }
   function submitNewMilestone(object, projectId) {
     $.post('/milestone/' + projectId, object, function(data) {
@@ -213,7 +203,7 @@ $(document).ready(function() {
     $.ajax({
       method: 'DELETE',
       url: '/project/' + id
-    }).then(function() {
+    }).done(function() {
       window.location.href = '/dashboard';
     });
   }
@@ -222,7 +212,7 @@ $(document).ready(function() {
     $.ajax({
       method: 'DELETE',
       url: '/milestone/' + id
-    }).then(function() {
+    }).done(function() {
       window.location.href = '/dashboard';
     });
   }
@@ -234,7 +224,7 @@ $(document).ready(function() {
   // }
 
   function submitResource(Resource) {
-    $.post('/api/resource/', Resource, function() {
+    $.post('/resource', Resource, function() {
       window.location.href = '/dashboard';
     });
   }
@@ -269,7 +259,7 @@ $(document).ready(function() {
   // }
 
   function submitMilestone(milestone) {
-    $.post('/api/milestone/', milestone).then(() => location.reload());
+    $.post('/milestone/', milestone).done(() => location.reload());
   }
 
   // function handleDeleteMilestone() {
@@ -284,7 +274,7 @@ $(document).ready(function() {
     $.ajax({
       method: 'DELETE',
       url: '/milestone/' + id
-    }).then(() => location.reload());
+    }).done(() => location.reload());
   }
 
   // function editMilestone(Milestone) {
@@ -292,15 +282,6 @@ $(document).ready(function() {
   //         .parent();
   //     window.location.href = "/" + currentMilestone.id
   // }
-
-  $('.dropdown').click(function() {
-    $(this).toggleClass('is-active');
-  });
-  $('.fa-angle-down').click(function() {
-    $(this)
-      .closest('.card-content')
-      .toggleClass('is-active');
-  });
 
   $('.resource-button').click(function() {
     $('.resource-modal').toggleClass('is-active');
@@ -324,5 +305,16 @@ $(document).ready(function() {
 
   $('.edit-cancel').click(function() {
     $('.edit-modal').toggleClass('is-active');
+  });
+  $('.dropdown').click(function() {
+    $(this).toggleClass('is-active');
+  });
+
+  $('.milestone-button').click(function() {
+    $('.milestone-modal').toggleClass('is-active');
+  });
+
+  $('.milestone-cancel').click(function() {
+    $('.milestone-modal').toggleClass('is-active');
   });
 });

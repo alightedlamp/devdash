@@ -12,7 +12,7 @@ router.get(
   (req, res) => res.redirect('/dashboard')
 );
 
-router.get('/', (req, res) => {
+router.get('/:userId', (req, res) => {
   // In the future, this can be a public profile page with user info
   res.redirect('/');
   // res.render('user', {
@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
   // });
 });
 
-router.get('/edit', (req, res) => {
+router.get('/edit/:userId', (req, res) => {
   // In the future, this can be an edit page for the user's profile
   res.redirect('/');
   // res.render('edit', {

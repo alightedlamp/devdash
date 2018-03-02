@@ -139,7 +139,7 @@ router.post('/milestone/:projectId', (req, res) => {
     );
 });
 
-router.put('/milestone/:projectId', (req, res) => {
+router.put('/milestone/:milestoneId', (req, res) => {
   db.Milestone.update(req.body, {
     where: {
       id: req.params.projectId,
@@ -158,7 +158,7 @@ router.put('/milestone/:projectId', (req, res) => {
     });
 });
 
-router.delete('/milestone/:projectId', (req, res) => {
+router.delete('/milestone/:milestoneId', (req, res) => {
   db.Milestone.destroy({
     where: {
       id: req.params.projectId,

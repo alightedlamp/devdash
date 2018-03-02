@@ -42,7 +42,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     priority: {
       type: DataTypes.TINYINT,
-      defaultValue: 1
+      defaultValue: 0
     }
   });
 

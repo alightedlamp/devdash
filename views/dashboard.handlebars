@@ -9,7 +9,7 @@
 				<div class="column is-6 card" id="projectContainer">
 					<h2 class="subtitle">Projects</h2>
 					{{#unless projects}}
-					<div class="notification is-info">
+					<div class="notification">
 						Hey, you don't have any projects! Surely you're working on some things! Add them here and keep track of your progress. You
 						can set goals by creating
 						<strong>Milestones</strong> with due dates, much like you would with GitHub. We'll help keep you accountable.
@@ -23,7 +23,7 @@
 				<div class="column is-6 card" id="resourceContainer">
 					<h2 class="subtitle">Resources</h2>
 					{{#unless resources}}
-					<div class="notification is-info">
+					<div class="notification is-warning">
 						Hey, you don't have any resources added! Why not add some articles you want to read, or a tutorial?
 					</div>
 					{{/unless}} {{#each resources}} {{> resource-block}} {{/each}}
