@@ -2,38 +2,38 @@ const Sequelize = require('sequelize');
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const axios = require('axios');
 const db = require('../models');
-
 const ensureAuthenticated = require('../util/helpers').ensureAuthenticated;
 const axios = require('axios');
 const _ = require('lodash');
 
 const BASE_URL = 'https://api.github.com';
-const getEvents = function (username, page) {
+const getEvents = function(username, page) {
   return axios.get(`${BASE_URL}/users/${username}/events?page=${page}`, {
     headers: {
       'User-Agent': 'devdash'
     }
   });
 };
-const prepQueryObject = function (req) {
+const prepQueryObject = function(req) {
   return {
     where: {
       id: req.user.id
     },
-    order: [
-      ['priority', 'DESC']
-    ]
-  }
-}
-const getUserData = function (req) {
-  return [db.Project.findAll(q), db.Resource.findAll(q), getEvents(req.user.github_username, 1)];
-}
+    order: [['priority', 'DESC']]
+  };
+};
+const getUserData = function(req) {
+  return [
+    db.Project.findAll(q),
+    db.Resource.findAll(q),
+    getEvents(req.user.github_username, 1)
+  ];
+};
 
 router.get('/', ensureAuthenticated, (req, res) => {
-  // const userData = getUserData(prepQueryObject(req));
-  console.log(getEvents(req.user.github_username, 1))
+  const userData = getUserData(prepQueryObject(req), 1);
+  console.log(userData());
 
   Promise.all(userData)
     .then(data => {

@@ -32,6 +32,7 @@
     "mysql2": "^1.5.2",
     "passport": "^0.4.0",
     "passport-github": "^1.1.0",
+    "passport-local": "^1.0.0",
     "sequelize": "^4.33.4"
   },
   "devDependencies": {
@@ -48,7 +49,6 @@
     "karma-opera-launcher": "^1.0.0",
     "karma-safari-launcher": "^1.0.0",
     "mocha": "^5.0.1",
-    "passport-mock": "0.0.3",
     "watchify": "^3.10.0"
   }
 }

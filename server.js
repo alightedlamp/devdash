@@ -29,34 +29,33 @@ if (process.env.NODE_ENV === 'development') {
       );
     })
   );
-} else {
-  const GitHubStrategy = require('passport-github').Strategy;
-  passport.use(
-    new GitHubStrategy(
-      {
-        clientID: keys.github.id,
-        clientSecret: keys.github.secret,
-        callbackURL: 'https://47628ed4.ngrok.io/user/auth/github/callback'
-      },
-      function(accessToken, refreshToken, profile, done) {
-        const options = {
-          where: {
-            github_id: profile.id
-          },
-          defaults: {
-            github_username: profile.username,
-            name: profile.displayName,
-            avatar: profile._json.avatar_url,
-            email: profile._json.email
-          }
-        };
-        db.User.findOrCreate(options)
-          .spread((user, created) => done(null, user))
-          .catch(err => done(err, null));
-      }
-    )
-  );
 }
+const GitHubStrategy = require('passport-github').Strategy;
+passport.use(
+  new GitHubStrategy(
+    {
+      clientID: keys.github.id,
+      clientSecret: keys.github.secret,
+      callbackURL: 'https://b1b322b8.ngrok.io/user/auth/github/callback'
+    },
+    function(accessToken, refreshToken, profile, done) {
+      const options = {
+        where: {
+          github_id: profile.id
+        },
+        defaults: {
+          github_username: profile.username,
+          name: profile.displayName,
+          avatar: profile._json.avatar_url,
+          email: profile._json.email
+        }
+      };
+      db.User.findOrCreate(options)
+        .spread((user, created) => done(null, user))
+        .catch(err => done(err, null));
+    }
+  )
+);
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
