@@ -3,7 +3,7 @@ $(document).ready(function() {
 
   // ----------FOR PROJECTS-----------
   $('.editProject').click(function() {
-    var id = $(this).attr('data-id');
+    var id = $(this).data('id');
     var name = $('p.projectTitle#' + id).text();
     // Write name value to name field via $("fieldSelector").val(name)
     $('#projectEditNameField').val(name);
@@ -13,9 +13,8 @@ $(document).ready(function() {
   });
 
   $('.deleteProject').click(function() {
-    var id = $(this).attr('data-id');
+    var id = $(this).data('id');
     deleteProject(id);
-    console.log('id is ' + id);
   });
 
   // The Submit button for the Edit Project modal window must have ID "submitEditedProject"
@@ -126,9 +125,11 @@ $(document).ready(function() {
     // The Resource URL field must have id "ResourceSubmitURLField"
     var object = {
       title: $('#milestoneSubmitTitleField').val(),
-      target_completion_date: ''
+      description: $('#milestoneSubmitDescriptionField').val(),
+      target_completion_date: $('#milestoneSubmitCompletionDateField').val()
     };
-    var id = $('#milestoneSubmitProjectIdField').val();
+    var projectId = $('#project-id').val();
+    console.log(projectId);
     submitNewMilestone(object, projectId);
   });
 
@@ -144,9 +145,8 @@ $(document).ready(function() {
   });
 
   $('.deleteMilestone').click(function() {
-    var id = $(this).attr('data-id');
+    const id = $(this).data('id');
     deleteMilestone(id);
-    console.log('id is ' + id);
   });
 
   //------------------FUNCTIONS--------------------------
@@ -156,9 +156,11 @@ $(document).ready(function() {
       method: 'PUT',
       url: '/resource/' + object.id,
       data: object
-    }).done(function(data) {
-      location.reload();
-    });
+    })
+      .done(function(data) {
+        location.reload();
+      })
+      .fail(error => console.log(error));
   }
 
   function submitEditedMilestone(object) {
@@ -166,27 +168,33 @@ $(document).ready(function() {
       method: 'PUT',
       url: '/resource/' + object.id,
       data: object
-    }).done(function(data) {
-      console.log(data);
-    });
+    })
+      .done(function(data) {
+        console.log(data);
+      })
+      .fail(error => console.log(error));
   }
 
   function submitNewResource(object) {
     $.post('/resource', object, function(data) {
       console.log(data);
-    }).done(() => location.reload());
+    })
+      .done(() => location.reload())
+      .fail(error => console.log(error));
   }
   function submitNewMilestone(object, projectId) {
-    $.post('/milestone/' + projectId, object, function(data) {
-      console.log(data);
-    });
+    $.post('/milestone/' + projectId, object)
+      .done(() => window.location.reload())
+      .fail(error => console.log(error));
   }
 
   function submitNewProject(object) {
     console.log(object);
     $.post('/project', object, function(data) {
       console.log(data);
-    }).done(() => location.reload());
+    })
+      .done(() => location.reload())
+      .fail(error => console.log(error));
   }
 
   function submitEditedProject(object) {
@@ -194,27 +202,33 @@ $(document).ready(function() {
       method: 'PUT',
       url: '/project/' + object.id,
       data: object
-    }).done(function(data) {
-      console.log(data);
-    });
+    })
+      .done(function(data) {
+        window.location.reload();
+      })
+      .fail(error => console.log(error));
   }
 
   function deleteProject(id) {
     $.ajax({
       method: 'DELETE',
       url: '/project/' + id
-    }).done(function() {
-      window.location.href = '/dashboard';
-    });
+    })
+      .done(function() {
+        window.location.href = '/dashboard';
+      })
+      .fail(error => console.log(error));
   }
 
   function deleteMilestone(id) {
     $.ajax({
       method: 'DELETE',
       url: '/milestone/' + id
-    }).done(function() {
-      window.location.href = '/dashboard';
-    });
+    })
+      .done(function() {
+        window.location.href = '/dashboard';
+      })
+      .fail(error => console.log(error));
   }
 
   // function editProject() {
@@ -259,7 +273,9 @@ $(document).ready(function() {
   // }
 
   function submitMilestone(milestone) {
-    $.post('/milestone/', milestone).done(() => location.reload());
+    $.post('/milestone/', milestone)
+      .done(() => location.reload())
+      .fail(error => console.log(error));
   }
 
   // function handleDeleteMilestone() {
@@ -274,7 +290,9 @@ $(document).ready(function() {
     $.ajax({
       method: 'DELETE',
       url: '/milestone/' + id
-    }).done(() => location.reload());
+    })
+      .done(() => location.reload())
+      .fail(error => console.log(error));
   }
 
   // function editMilestone(Milestone) {

@@ -11,6 +11,9 @@ module.exports = function(sequelize, DataTypes) {
         len: [2, 140]
       }
     },
+    description: {
+      type: DataTypes.STRING
+    },
     target_completion_date: {
       type: DataTypes.DATE,
       allowNull: false,

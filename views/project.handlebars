@@ -10,24 +10,28 @@
 				{{ error }}
 			</div>
 			{{else}}
-			<h2 class="subtitle">{{ project.title }}</h2>
-
+			<h2 class="subtitle">
+				<strong>Project: </strong>{{ project.title }}</h2>
+			{{#unless milestones}}
+			<div class="notification is-info">
+				<p>Hey! This is your brand new project page. Here you can manage the tasks you need to complete for your project. Start
+					by adding a new
+					<strong>Milestone</strong>!</strong>
+				</p>
+			</div>
+			{{/unless}}
+			<div class="content">
+				<a class="button modal-button milestone-button is-success" data-target="modal-ter">Add Milestone</a>
+			</div>
+			{{> modals/add-milestone}}
 			<div class="card">
-				<header class="card-header">
-					<!-- Progress Bar -->
-					<p class="card-header-title">
-						Progress
-						<progress class="progress is-success" value="40" max="100">15%</progress>
-					</p>
-
-					<a class="button modal-button milestone-button is-success" data-target="modal-ter">Add Milestone</a>
-
-					{{> modals/add-milestone}}
-
-				</header>
-				{{#each milestone}} {{> milestone-block}} {{/each}}
+				<div class="card-content">
+					<progress class="progress is-success" value="40" max="100">15%</progress>
+					{{#if milestones}} {{#each milestones}} {{> milestone-block}} {{/each}} {{/if}}
+				</div>
 			</div>
 		</div>
 		{{/if}}
 	</section>
+	<input type="hidden" value="{{ project.id }}" id="project-id" />
 </section>

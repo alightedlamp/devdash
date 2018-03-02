@@ -8,9 +8,17 @@
 
             <!-- Milestone Name Input -->
             <div class="field">
-                <label class="label">Name of Milestone</label>
+                <label class="label">Name</label>
                 <div class="control">
                     <input class="input" type="text" placeholder="" id="milestoneSubmitTitleField">
+                </div>
+            </div>
+
+            <!-- Description Input -->
+            <div class="field">
+                <label class="label">Description</label>
+                <div class="control">
+                    <textarea class="input" id="milestoneSubmitDescriptionField" rows="15"></textarea>
                 </div>
             </div>
 
@@ -23,7 +31,7 @@
             </div>
         </section>
         <footer class="modal-card-foot">
-            <button class="button is-success">Save changes</button>
+            <button class="button is-success" id="submitNewMilestone" data-projectId="{{project.id}}">Save changes</button>
             <button class="button milestone-cancel">Cancel</button>
         </footer>
     </div>

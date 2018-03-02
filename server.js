@@ -17,7 +17,7 @@ passport.use(
     {
       clientID: keys.github.id,
       clientSecret: keys.github.secret,
-      callbackURL: 'https://b1b322b8.ngrok.io/user/auth/github/callback'
+      callbackURL: 'https://3cab854b.ngrok.io/user/auth/github/callback'
     },
     function(accessToken, refreshToken, profile, done) {
       const options = {

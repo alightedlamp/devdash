@@ -5,8 +5,9 @@ const router = express.Router();
 const db = require('../models');
 const ensureAuthenticated = require('../util/helpers').ensureAuthenticated;
 
-router.get('/', ensureAuthenticated, (req, res) => {
-  db.Resource.findAll({ where: { user_id: req.user.id } })
+// List all milestones for a project
+router.get('/:projectId', ensureAuthenticated, (req, res) => {
+  db.Milestone.findAll({ where: { user_id: req.user.id } })
     .then(function(results) {
       res.json(results);
     })
@@ -16,18 +17,15 @@ router.get('/', ensureAuthenticated, (req, res) => {
     });
 });
 
-router.post('/', ensureAuthenticated, (req, res) => {
-  db.Resource.create({
-    user_id: req.user.id,
+router.post('/:projectId', ensureAuthenticated, (req, res) => {
+  db.Milestone.create({
+    project_id: req.params.projectId,
     title: req.body.title,
-    url: req.body.url,
-    completed: req.body.completed,
-    priority: req.body.priority
+    description: req.body.description,
+    target_completion_date: req.body.target_completion_date
   })
-    .then(function(results) {
-      res.json(results);
-    })
-    .catch(function(err) {
+    .then(result => res.json(result))
+    .catch(err => {
       console.log(err);
       res.status(500).send({
         error: 'Something went wrong. Try again, maybe with valid data.'
@@ -35,14 +33,15 @@ router.post('/', ensureAuthenticated, (req, res) => {
     });
 });
 
-router.put('/:resourceId', ensureAuthenticated, (req, res) => {
-  db.Resource.update(req.body, {
+router.put('/:milestoneId', ensureAuthenticated, (req, res) => {
+  db.Milestone.update(req.body, {
     where: {
-      id: req.params.resourceId
+      id: req.params.milestoneId,
+      user_id: req.user.id
     }
   })
     .then(function(results) {
-      res.send(200).send({ success: true });
+      res.json(results);
     })
     .catch(function(err) {
       console.log(err);
@@ -53,14 +52,14 @@ router.put('/:resourceId', ensureAuthenticated, (req, res) => {
     });
 });
 
-router.delete('/:resourceId', ensureAuthenticated, (req, res) => {
-  db.Resource.destroy({
+router.delete('/:milestoneId', ensureAuthenticated, (req, res) => {
+  db.Milestone.destroy({
     where: {
-      id: req.params.resourceId
+      id: req.params.milestoneId
     }
   })
     .then(function(results) {
-      res.status(200).send({ success: true });
+      res.json(results);
     })
     .catch(function(err) {
       console.log(err);
