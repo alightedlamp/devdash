@@ -8,7 +8,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "mocha --exit",
     "start": "nodemon server.js"
   },
   "repository": {
@@ -31,5 +31,22 @@
     "passport": "^0.4.0",
     "passport-github": "^1.1.0",
     "sequelize": "^4.33.4"
+  },
+  "devDependencies": {
+    "browserify": "^16.1.0",
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "karma": "^2.0.0",
+    "karma-browserify": "^5.2.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-common-js": "^0.2.2",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-opera-launcher": "^1.0.0",
+    "karma-safari-launcher": "^1.0.0",
+    "mocha": "^5.0.1",
+    "passport-mock": "0.0.3",
+    "watchify": "^3.10.0"
   }
 }
