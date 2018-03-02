@@ -85,17 +85,19 @@ router.get('/milestone/:projectId', ensureAuthenticated, (req, res) => {
 router.post('/milestone/:projectId', (req, res) => {
   db.Milestone.create({
     user_id: req.user.id,
+    project_id: req.body.project_id,
     title: req.body.title,
-    target_completion_date: req.body.target_completion_date
+    priority: req.body.priority || null,
+    target_completion_date: req.body.target_completion_date || null
   })
     .then(result => res.json(result))
     .catch(err => res.status(500).json(err));
 });
 
-router.put('/milestone/:projectId', (req, res) => {
+router.put('/milestone/:milestoneId', (req, res) => {
   db.Milestone.update(req.body, {
     where: {
-      id: req.params.projectId
+      id: req.params.milestoneId
     }
   })
     .then(function(results) {
@@ -107,10 +109,10 @@ router.put('/milestone/:projectId', (req, res) => {
     });
 });
 
-router.delete('/milestone/:projectId', (req, res) => {
+router.delete('/milestone/:milestoneId', (req, res) => {
   db.Milestone.destroy({
     where: {
-      id: req.params.projectId
+      id: req.params.milestoneId
     }
   })
     .then(function(results) {
