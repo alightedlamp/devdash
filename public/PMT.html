@@ -190,7 +190,47 @@
     </div>
 
   </div>
+  <a class="button modal-button milestone-button is-success" data-target="modal-ter">Add Milestone</a>
+  <div class="modal milestone-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Add a Milestone</p>
+      </header>
+      <section class="modal-card-body">
 
+        <!-- Milestone Name Input -->
+        <div class="field">
+          <label class="label">Name of Milestone</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="">
+          </div>
+        </div>
+
+        <!-- Target Completion Date Input -->
+        <div class="field">
+            <label class="label">Target Completion Date</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="">
+            </div>
+          </div>
+
+        <!-- Completed Date -->
+        <div class="field">
+            <label class="label">Completed Date</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="">
+            </div>
+          </div>
+
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Save changes</button>
+        <button class="button milestone-cancel">Cancel</button>
+      </footer>
+    </div>
+  </div>
+</header>
   <script>
     $(".dropdown").click(function () {
       $(this).toggleClass('is-active');
