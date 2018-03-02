@@ -5,6 +5,8 @@ const router = express.Router();
 const db = require('../models');
 const ensureAuthenticated = require('../util/helpers').ensureAuthenticated;
 
+// Route base is '/resource'
+
 router.get('/', ensureAuthenticated, (req, res) => {
   db.Resource.findAll({ where: { user_id: req.user.id } })
     .then(function(results) {
@@ -12,7 +14,7 @@ router.get('/', ensureAuthenticated, (req, res) => {
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).render('500', { error: err });
+      res.status(500).send({ error: 'Could not get resources' });
     });
 });
 
@@ -29,7 +31,7 @@ router.post('/', ensureAuthenticated, (req, res) => {
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).send('Error!');
+      res.status(500).send({ error: 'Could not add new resource' });
     });
 });
 
@@ -44,7 +46,7 @@ router.put('/:resourceId', (req, res) => {
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).send('Error!');
+      res.status(500).send({ error: 'Could not update resource' });
     });
 });
 
@@ -59,7 +61,7 @@ router.delete('/:resourceId', (req, res) => {
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).send('Error!');
+      res.status(500).send({ error: 'Could not delete resource' });
     });
 });
 

@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   if (req.user) {
+    // One day this will be a fancy homepage describing the app, maybe tomorrow, March 2nd, who knows
     res.send('A user is logged in');
   } else {
     res.send(
