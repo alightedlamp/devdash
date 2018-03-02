@@ -29,7 +29,11 @@ router.post('/', ensureAuthenticated, (req, res) => {
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).send('Error!');
+      res
+        .status(500)
+        .send({
+          error: 'Something went wrong. Try again, maybe with valid data.'
+        });
     });
 });
 
@@ -44,7 +48,9 @@ router.put('/:resourceId', (req, res) => {
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).send('Error!');
+      res
+        .status(500)
+        .send({ error: "Something went wrong. Maybe this isn't your item." });
     });
 });
 
@@ -59,7 +65,9 @@ router.delete('/:resourceId', (req, res) => {
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).send('Error!');
+      res
+        .status(500)
+        .send({ error: "Something went wrong. Maybe this isn't your item." });
     });
 });
 

@@ -295,7 +295,7 @@ $(document).ready(function() {
   //     window.location.href = "/" + currentMilestone.id
   // }
 
-  $('.dropdown ').click(function() {
+  $('.dropdown').click(function() {
     $(this).toggleClass('is-active');
   });
   $('.fa-angle-down').click(function() {
@@ -304,27 +304,27 @@ $(document).ready(function() {
       .toggleClass('is-active');
   });
 
-  $('.resource-button ').click(function() {
-    $('.resource-modal ').toggleClass('is-active');
+  $('.resource-button').click(function() {
+    $('.resource-modal').toggleClass('is-active');
   });
 
-  $('.resource-cancel ').click(function() {
-    $('.resource-modal ').toggleClass('is-active');
+  $('.resource-cancel').click(function() {
+    $('.resource-modal').toggleClass('is-active');
   });
 
-  $('.project-button ').click(function() {
-    $('.project-modal ').toggleClass('is-active');
+  $('.project-button').click(function() {
+    $('.project-modal').toggleClass('is-active');
   });
 
-  $('.project-cancel ').click(function() {
-    $('.project-modal ').toggleClass('is-active');
+  $('.project-cancel').click(function() {
+    $('.project-modal').toggleClass('is-active');
   });
 
-  $('.edit ').click(function() {
-    $('edit-modal ').toggleClass('is-active');
+  $('.edit').click(function() {
+    $('edit-modal').toggleClass('is-active');
   });
 
   $('.edit-cancel').click(function() {
-    $('.edit-modal ').toggleClass('is-active');
+    $('.edit-modal').toggleClass('is-active');
   });
 });
