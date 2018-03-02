@@ -59,10 +59,14 @@ app.use(require('./controllers'));
 app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-db.sequelize
-  .sync()
-  .then(() =>
-    app.listen(PORT, () =>
-      console.log(`App running on port ${PORT} The time is: ${Date.now()}`)
-    )
-  );
+if (process.env.NODE_ENV === 'test') {
+  module.exports = app.listen(PORT);
+} else {
+  db.sequelize
+    .sync({ force: true })
+    .then(() =>
+      app.listen(PORT, () =>
+        console.log(`App running on port ${PORT} at ${Date.now()}`)
+      )
+    );
+}
