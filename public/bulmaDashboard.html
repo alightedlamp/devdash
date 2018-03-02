@@ -89,8 +89,8 @@
 		<div class="column"></div>
 
 		<div class="column is-5 card">
-			<a href="#"><strong>Project List</strong></a>
-
+			<strong>Project List</strong>
+			<a onclick="location.href='addproject.html'" class="button add">Add Project</a>
 			<br><br>	
 			<div class="card">
 	  				<header class="card-header">
@@ -171,7 +171,7 @@
 											  </div>
 											  <div class="dropdown-menu" id="dropdown-menu" role="menu">
 												<div class="dropdown-content">
-												  <a href="#" class="dropdown-item">
+												  <a onclick="location.href='PMT.html'" class="dropdown-item">
 													Go to Project
 												  </a>
 												  <a class="dropdown-item">
@@ -211,7 +211,7 @@
 													Edit
 												  </a>
 												  <hr class="dropdown-divider">
-												  <a href="#" class="dropdown-item">
+												  <a onclick="deleteProject()" class="dropdown-item">
 													Delete
 												  </a>
 												</div>
@@ -224,8 +224,8 @@
 
 		<!-- Resources -->
 		  <div class="column is-5 card">
-			  <a href="#"><strong>Resource List</strong></a>
-
+			  <strong>Resource List</strong>
+				<a a onclick="location.href='addresource.html'" class="button add">Add Resource</a>
 			<br><br>
 			<div class="card">
 	  				<header class="card-header">
@@ -274,7 +274,7 @@
 											  </div>
 											  <div class="dropdown-menu" id="dropdown-menu" role="menu">
 												<div class="dropdown-content">
-												  <a href="#" class="dropdown-item">
+												  <a onclick="location.href='projectid:'" class="dropdown-item">
 													Go to Article
 												  </a>
 												  <a class="dropdown-item">
@@ -346,7 +346,7 @@
 													Edit
 												  </a>
 												  <hr class="dropdown-divider">
-												  <a href="#" class="dropdown-item">
+												  <a onclick="deleteResource()" class="dropdown-item">
 													Delete
 												  </a>
 												</div>
@@ -376,7 +376,38 @@
 	$(".dropdown").click(function() {
 	$(this).toggleClass('is-active');
 	})
-	
+
+	function submitLogin() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value
+
+    console.log("Name: " + document.getElementById("email").value + " " + "Password: " + document.getElementById("password").value)
+}
+
+function handleDeleteResource() {
+    var currentResource = $(this)
+        .parent();
+    deleteResource(currentResource.id);
+}
+
+function deleteResource(id) {
+		$.ajax({
+			method: "DELETE",
+			url: "/api/resource/" + id
+		})
+		.then(function() {
+			getResource();
+		});
+}
+function deleteProject(id) {
+    $.ajax({
+        method: "DELETE",
+        url: "/api/project/" + id
+    })
+    .then(function() {
+        window.location.href = "/";
+    });
+}	
 </script>
 </body>
 

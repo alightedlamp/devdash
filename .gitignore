@@ -2,3 +2,4 @@
 toDelete
 .vscode
 /config
+node_modules
