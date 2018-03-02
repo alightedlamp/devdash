@@ -20,10 +20,19 @@ router.get('/', ensureAuthenticated, (req, res) => {
     });
 });
 
+router.get('/:projectId', ensureAuthenticated, (req, res) => {
+  db.Project.findOne({ where: { id: req.params.projectId } }).then(data =>
+    res.render('project', { project: data })
+  );
+});
+
 router.post('/', ensureAuthenticated, (req, res) => {
+  console.log(req.body);
   db.Project.create({
     user_id: req.user.id,
     title: req.body.title,
+    description: req.body.description,
+    target_completion_date: req.body.target_completion_date,
     progress: req.body.progress,
     completed: req.body.completed,
     priority: req.body.priority
@@ -53,7 +62,7 @@ router.put('/:projectId', (req, res) => {
 });
 
 router.delete('/:projectId', (req, res) => {
-  db.Resource.destroy({
+  db.Project.destroy({
     where: {
       id: req.params.projectId
     }

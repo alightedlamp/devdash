@@ -11,12 +11,26 @@ module.exports = function(sequelize, DataTypes) {
         len: [2, 140]
       }
     },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        len: [0, 255]
+      }
+    },
     progress: {
       type: DataTypes.TINYINT,
       defaultValue: 0,
       validate: {
         min: 0,
         max: 100
+      }
+    },
+    target_completion_date: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      validate: {
+        isDate: true
       }
     },
     completed_at: {

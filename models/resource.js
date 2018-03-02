@@ -18,9 +18,9 @@ module.exports = function(sequelize, DataTypes) {
         isUrl: true // checks for url format
       }
     },
-    completed: {
+    completed_at: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
       validate: {
         isDate: true
       }

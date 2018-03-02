@@ -1,220 +1,213 @@
-<div class="container">
-
-	<!-- Nav Container -->
-	<nav class="level">
-
-		<!-- Left Side -->
-		<div class="level-left">
-			<div class="level-item">
-				<p class="subtitle is-3">
-					<strong>Devdash</strong>
-				</p>
+<!-- Nav Container -->
+<nav class="navbar is-transparent">
+	<div class="container">
+		<div class="navbar-brand">
+			<a class="navbar-item" href="/">
+				<h1 class=" title">DevDash</h1>
+			</a>
+			<div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+				<span></span>
+				<span></span>
+				<span></span>
 			</div>
 		</div>
 
-		<!-- Right side -->
-		<div class="level-right">
-
-			{{#if user}}
-			<p class="level-item">
-				<a href="/user/logout">Logout</a>
-			</p>
-			{{else}}
-			<!-- Username -->
-			<p class="level-item">
-				<div class="field" id="form_id">
-					<p class="control has-icons-left has-icons-right">
-						<input class="input" id="email" type="email" placeholder="Email">
-						<span class="icon is-small is-left">
-							<i class="fas fa-envelope"></i>
-						</span>
-						<span class="icon is-small is-right">
-							<i class="fas fa-check"></i>
-						</span>
-					</p>
+		<div class="navbar-menu">
+			<div class="navbar-start">
+				<a class="navbar-item" href="/">
+					Home
+				</a>
+				{{#if user}}
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-link" href="/documentation/overview/start/">
+						{{user.name}}
+					</a>
+					<div class="navbar-dropdown is-boxed">
+						<a class="navbar-item" href="/documentation/overview/start/">
+							Dashboard
+						</a>
+						<a class="navbar-item" href="/documentation/overview/start/">
+							Profile
+						</a>
+						<a class="navbar-item" href="/documentation/overview/start/">
+							Settings
+						</a>
+					</div>
 				</div>
-			</p>
+				{{/if}}
+			</div>
 
-			<!-- Password -->
-			<p class="level-item">
-				<div class="field" id="form_id">
-					<p class="control has-icons-left">
-						<input class="input" id="password" type="password" placeholder="Password">
-						<span class="icon is-small is-left">
-							<i class="fas fa-lock"></i>
-						</span>
-					</p>
+			<div class="navbar-end">
+				<div class="navbar-item">
+					<div class="field is-grouped">
+						{{#if user}}
+						<p class="control">
+							<a class="button is-success" href="/user/logout">Logout</a>
+						</p>
+						{{else}}
+						<!-- Login Button -->
+						<p>
+							<a class="button is-success" href="/user/auth/github">
+								Login with GitHub
+							</a>
+						</p>
+						{{/if}}
+					</div>
 				</div>
-			</p>
-
-			<!-- Login Button -->
-			<p class="level-item">
-				<div class="field">
-					<p class="control">
-						<button class="button is-success" onclick="submitLogin()">
-							Login
-						</button>
-					</p>
-				</div>
-			</p>
+			</div>
 		</div>
+	</div>
+</nav>
+
+<!-- Project Column -->
+<section class="section">
+	<div class="container">
+		{{#if user}}
+		<div class="columns">
+			<div class="column is-6 card" id="projectContainer">
+				<h2 class="subtitle">Projects</h2>
+				{{#unless projects}}
+				<div class="notification is-info">
+					Hey, you don't have any projects! Surely you're working on some things! Add them here and keep track of your progress. You
+					can set goals by creating
+					<strong>Milestones</strong> with due dates, much like you would with GitHub. We'll help keep you accountable.
+				</div>
+				{{/unless}} {{#each projects}} {{> project-block}} {{/each}}
+				<a class="button modal-button project-button is-primary" data-target="modal-ter">Add Project</a>
+				<div class="modal project-modal">
+					<div class="modal-background"></div>
+					<div class="modal-card">
+						<header class="modal-card-head">
+							<p class="modal-card-title">Add a Project</p>
+						</header>
+						<section class="modal-card-body">
+
+							<!-- Project Name Input -->
+							<div class="field">
+								<label class="label">Name</label>
+								<div class="control">
+									<input class="input" type="text" placeholder="" id="projectSubmitNameField">
+								</div>
+							</div>
+
+							<!-- Project Description Input -->
+							<div class="field">
+								<label class="label">Description</label>
+								<div class="control">
+									<input class="input" type="text" placeholder="" id="projectSubmitDescriptionField">
+								</div>
+							</div>
+
+							<!-- Progress Input -->
+							<div class="field">
+								<label class="label">Progress</label>
+								<div class="control">
+									<input class="input" type="text" placeholder="(0-100%)" id="projectSubmitProgressField">
+								</div>
+							</div>
+
+							<!-- Due Date Input -->
+							<div class="field">
+								<label class="label">Due Date</label>
+								<div class="control">
+									<input class="input" type="date" id="projectSubmitDueDateField">
+								</div>
+							</div>
+
+							<!-- Dropdown -->
+							<div class="field">
+								<label class="label">Priority</label>
+								<div class="control">
+									<div class="select">
+										<select id="projectSubmitProgressField">
+											<option value="2">High</option>
+											<option value="1">Normal</option>
+											<option value="0">Low</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</section>
+						<footer class="modal-card-foot">
+							<button class="button is-success" id="submitNewProject">Save changes</button>
+							<button class="button project-cancel">Cancel</button>
+						</footer>
+					</div>
+				</div>
+			</div>
+
+			<!-- Resources -->
+			<div class="column is-6 card" id="resourceContainer">
+				<h2 class="subtitle">Resources</h2>
+				{{#unless resources}}
+				<div class="notification is-info">
+					Hey, you don't have any resources added! Why not add some articles you want to read, or a tutorial?
+				</div>
+				{{/unless}} {{#each resources}} {{> resource-block}} {{/each}}
+				<a class="button modal-button resource-button is-primary" data-target="modal-ter">Add Resource</a>
+				<div class="modal resource-modal">
+					<div class="modal-background"></div>
+					<div class="modal-card">
+						<header class="modal-card-head">
+							<p class="modal-card-title">Add a Resource</p>
+						</header>
+						<section class="modal-card-body">
+
+							<!-- Project Name Input -->
+							<div class="field">
+								<label class="label">Name</label>
+								<div class="control">
+									<input class="input" type="text" placeholder="" id="resourceSubmitTitleField">
+								</div>
+							</div>
+
+							<!-- Progress Input -->
+							<div class="field">
+								<label class="label">URL</label>
+								<div class="control">
+									<input class="input" type="text" placeholder="" id="resourceSubmitURLField">
+								</div>
+							</div>
+
+							<!-- Dropdown -->
+							<div class="field">
+								<label class="label">Priority</label>
+								<div class="control">
+									<div class="select">
+										<select id="resourceSubmitPriorityField">
+											<option value="2">High</option>
+											<option value="1">Normal</option>
+											<option value="0">Low</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+						</section>
+						<footer class="modal-card-foot">
+							<button class="button is-success" id="submitNewResource">Save changes</button>
+							<button class="button resource-cancel">Cancel</button>
+						</footer>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{{!--
+		<div class="columns">
+
+			<div class="column"></div>
+			<div class="column is-10 card">Stats</div>
+			<div class="column"></div>
+
+		</div>
+		--}} {{else if error}}
+		<div class="notification is-danger">{{ error }}</div>
 		{{/if}}
-	</nav>
-
-	<!-- Project Column -->
-	<div class="columns">
-		<div class="column"></div>
-
-		<div class="column is-5 card" id="projectContainer">
-			<strong>Project List</strong>
-			<a class="button modal-button project-button" data-target="modal-ter">Add Project</a>
-			<div class="modal project-modal">
-				<div class="modal-background"></div>
-				<div class="modal-card">
-					<header class="modal-card-head">
-						<p class="modal-card-title">Add a Project</p>
-					</header>
-					<section class="modal-card-body">
-
-						<!-- Project Name Input -->
-						<div class="field">
-							<label class="label">Name of Project</label>
-							<div class="control">
-								<input class="input" type="text" placeholder="">
-							</div>
-						</div>
-
-						<!-- Progress Input -->
-						<div class="field">
-							<label class="label">Progress</label>
-							<div class="control">
-								<input class="input" type="text" placeholder="(0-100%)">
-							</div>
-						</div>
-
-						<!-- Dropdown -->
-						<div class="field">
-							<label class="label">Priority</label>
-							<div class="control">
-								<div class="select">
-									<select>
-										<option value="high">High</option>
-										<option value="normal">Normal</option>
-										<option value="low">Low</option>
-									</select>
-								</div>
-							</div>
-						</div>
-					</section>
-					<footer class="modal-card-foot">
-						<button class="button is-success">Save changes</button>
-						<button class="button project-cancel">Cancel</button>
-					</footer>
-				</div>
-			</div>
-			<br>
-			<br> {{#each project}} {{> project-block}} {{/each}}
-		</div>
-
-		<!-- Resources -->
-		<div class="column is-5 card" id="resourceContainer">
-			<strong>Resource List</strong>
-			<a class="button modal-button resource-button" data-target="modal-ter">Add Resource</a>
-			<div class="modal resource-modal">
-				<div class="modal-background"></div>
-				<div class="modal-card">
-					<header class="modal-card-head">
-						<p class="modal-card-title">Add a Resource</p>
-					</header>
-					<section class="modal-card-body">
-
-						<!-- Project Name Input -->
-						<div class="field">
-							<label class="label">Name of Resource</label>
-							<div class="control">
-								<input class="input" type="text" placeholder="">
-							</div>
-						</div>
-
-						<!-- Progress Input -->
-						<div class="field">
-							<label class="label">Resource URL</label>
-							<div class="control">
-								<input class="input" type="text" placeholder="">
-							</div>
-						</div>
-
-						<!-- Dropdown -->
-						<div class="field">
-							<label class="label">Priority</label>
-							<div class="control">
-								<div class="select">
-									<select>
-										<option value="high">High</option>
-										<option value="normal">Normal</option>
-										<option value="low">Low</option>
-									</select>
-								</div>
-							</div>
-						</div>
-
-					</section>
-					<footer class="modal-card-foot">
-						<button class="button is-success">Save changes</button>
-						<button class="button resource-cancel">Cancel</button>
-					</footer>
-				</div>
-			</div>
-			<br>
-			<br> {{#each resource}} {{> resource-block}} {{/each}}
-
-		</div>
-
-		<div class="column"></div>
-	</div>
-
-	<!-- Footer Column -->
-	<div class="columns">
-
-		<div class="column"></div>
-		<div class="column is-10 card">Filler Content</div>
-		<div class="column"></div>
 
 	</div>
-
-</div>
-
-<script>
-
-	$(".dropdown").click(function () {
-		$(this).toggleClass('is-active');
-	})
-
-	$(".resource-button").click(function () {
-		$(".resource-modal").toggleClass('is-active');
-	})
-
-	$(".resource-cancel").click(function () {
-		$(".resource-modal").toggleClass('is-active');
-	})
-
-	$(".project-button").click(function () {
-		$(".project-modal").toggleClass('is-active');
-	})
-
-	$(".project-cancel").click(function () {
-		$(".project-modal").toggleClass('is-active');
-	})
-
-	$(".edit").click(function () {
-		$("edit-modal").toggleClass('is-active');
-	})
-
-	$('.edit-cancel').click(function () {
-		$(".edit-modal").toggleClass('is-active');
-	})
-
-</script> {{!-- Projects list --}}
+</section>
+{{!-- Projects list --}}
 <ul>
 	{{#each project}} {{> project-block}} {{/each}}
 </ul>

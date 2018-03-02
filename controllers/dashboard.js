@@ -16,7 +16,8 @@ const getEvents = function(username, page) {
 };
 
 router.get('/', ensureAuthenticated, (req, res) => {
-  const q = { where: { id: req.user.id } };
+  console.log(req.user.id);
+  const q = { where: { user_id: req.user.id } };
   const projectsPromise = db.Project.findAll(q);
   const resourcesPromise = db.Resource.findAll(q);
   // This should be updated to paginate results until there are no more
@@ -27,13 +28,15 @@ router.get('/', ensureAuthenticated, (req, res) => {
   Promise.all([projectsPromise, resourcesPromise, githubStats])
     .then(data => {
       const githubData = _.groupBy(data[2].data, 'type');
+      const projectData = data[0].map(project => project.dataValues);
+      const resourceData = data[1].map(project => project.dataValues);
       const dashboardData = {
         user: req.user,
-        projects: data[0],
-        resources: data[1],
+        projects: projectData,
+        resources: resourceData,
         githubData: githubData
       };
-      console.log(dashboardData);
+      console.log(dashboardData.projects);
       res.render('dashboard', dashboardData);
     })
     .catch(err => {

@@ -19,9 +19,9 @@
 			<p class="level-item">
 				<div class="field">
 					<p class="control">
-						<button class="button is-success" onclick="submitLogin()">
-							Return to Homepage
-						</button>
+						<a class="button is-success" href="/dashboard">
+							Return to Dashboard
+						</a>
 					</p>
 				</div>
 			</p>
@@ -93,27 +93,27 @@
 	})
 
 
-	$(".project-button").click(function() {
+	$(".project-button").click(function () {
 		$(".project-modal").toggleClass('is-active');
 	})
 
-	$(".project-cancel").click(function() {
+	$(".project-cancel").click(function () {
 		$(".project-modal").toggleClass('is-active');
 	})
 
-	$(".edit").click(function() {
+	$(".edit").click(function () {
 		$("edit-modal").toggleClass('is-active');
 	})
 
-	$('.edit-cancel').click(function() {
+	$('.edit-cancel').click(function () {
 		$(".edit-modal").toggleClass('is-active');
 	})
 
-	$(".milestone-button").click(function() {
-	    $(".milestone-modal").toggleClass('is-active');
-  	})
+	$(".milestone-button").click(function () {
+		$(".milestone-modal").toggleClass('is-active');
+	})
 
-  	$(".milestone-cancel").click(function() {
-    	$(".milestone-modal").toggleClass("is-active");
+	$(".milestone-cancel").click(function () {
+		$(".milestone-modal").toggleClass("is-active");
 	})
 </script>
