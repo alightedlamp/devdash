@@ -21,12 +21,30 @@ router.get('/', ensureAuthenticated, (req, res) => {
 });
 
 router.get('/:projectId', ensureAuthenticated, (req, res) => {
-  db.Project.findOne({
+  const projectData = db.Project.findOne({
     where: {
       id: req.params.projectId,
       user_id: req.user.id
     }
-  }).then(data => res.render('project', { project: data }));
+  });
+  const milestoneData = db.Milestone.findAll({
+    where: {
+      project_id: req.params.projectId
+    }
+  });
+  Promise.all([projectData, milestoneData])
+    .then(data => {
+      res.render('project', {
+        project: data,
+        milestones: milestoneData
+      });
+    })
+    .catch(error => {
+      console.log(error);
+      res
+        .status(500)
+        .send({ error: "Something went wrong. Maybe this isn't your item." });
+    });
 });
 
 router.post('/', ensureAuthenticated, (req, res) => {
