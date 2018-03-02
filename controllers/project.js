@@ -10,11 +10,16 @@ const ensureAuthenticated = require('../util/helpers').ensureAuthenticated;
 // PROJECT ROUTES
 /////////////////////////////////////
 router.get('/', ensureAuthenticated, (req, res) => {
-  db.Project.findAll({ where: { user_id: req.user.id } }).then(result => {
+  db.Project.findAll({ where: { user_id: req.user.id } })
+  .then(result => {
     res.render('project', {
       projects: result
     });
   });
+  .catch(function(err) {
+  console.log(err);
+  res.status(500).render('500', { error: err });
+});
 });
 
 router.post('/', ensureAuthenticated, (req, res) => {
@@ -26,38 +31,87 @@ router.post('/', ensureAuthenticated, (req, res) => {
 });
 
 router.put('/:projectId', (req, res) => {
-  console.log('in /API/project');
-  res.send('in /API/project');
+  db.Project.update(req.body, {
+    where: {
+      id: req.body.id
+    }
+  })
+    .then(function (results) {
+      res.json(results);
+    })
+    .catch(function (err) {
+      console.log(err);
+      res.status(500).send('Error!');
+    });
 });
 
 router.delete('/:projectId', (req, res) => {
-  console.log('in /API/project');
-  res.send('in /API/project');
+  db.Resource.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(function (results) {
+      res.json(results);
+    })
+    .catch(function (err) {
+      console.log(err);
+      res.status(500).send('Error!');
+    });
 });
 
 // MILESTONE ROUTES
 /////////////////////////////////////
 
 // List all milestones for a project
-router.get('/milestone/:projectId', (req, res) => {
-  console.log('in /project/milestone/:ProjectID' + req.params.ProjectID);
-  res.send('in /project/milestone/:ProjectID' + req.params.ProjectID + '</p>');
+router.get('/milestone/:projectId', ensureAuthenticated, (req, res) => {
+  db.Milestone.findAll({ where: { user_id: req.user.id } })
+    .then(result => {
+      res.render('milestone-block', {
+        milestone: result
+      });
+    });
+  .catch (function(err) {
+    console.log(err);
+    res.status(500).render('500', { error: err });
+  });
 });
 
 router.post('/milestone/:projectId', (req, res) => {
-  // Needs project ID in request body
-  console.log('in /API/project');
-  res.send('in /API/project');
+  const data = req.body;
+  db.Milestone.create(data)
+    .then(result => res.json(result))
+    .catch(err => res.status(500).json(err));
 });
 
 router.put('/milestone/:projectId', (req, res) => {
-  console.log('in /API/project');
-  res.send('in /API/project');
+  db.Milestone.update(req.body, {
+    where: {
+      id: req.body.id
+    }
+  })
+    .then(function (results) {
+      res.json(results);
+    })
+    .catch(function (err) {
+      console.log(err);
+      res.status(500).send('Error!');
+    });
 });
 
 router.delete('/milestone/:projectId', (req, res) => {
-  console.log('in /API/project');
-  res.send('in /API/project');
+  db.Milestone.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(function (results) {
+      res.json(results);
+    })
+    .catch(function (err) {
+      console.log(err);
+      res.status(500).send('Error!');
+    });
 });
 
 module.exports = router;
