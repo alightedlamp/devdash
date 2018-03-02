@@ -19,6 +19,12 @@ module.exports = function(sequelize, DataTypes) {
         max: 100
       }
     },
+    target_completion_date: {
+      type: DataTypes.DATE,
+      validate: {
+        isDate: true
+      }
+    },
     completed_at: {
       type: DataTypes.DATE,
       allowNull: true,
@@ -28,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     priority: {
       type: DataTypes.TINYINT,
-      defaultValue: 1
+      defaultValue: 0 // Setting to false as default so tasks can be priorityless
     }
   });
 
