@@ -16,9 +16,9 @@ router.get('/', ensureAuthenticated, (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', ensureAuthenticated, (req, res) => {
   db.Resource.create({
-    user_id: req.body.user_id,
+    user_id: req.user.id,
     title: req.body.title,
     url: req.body.url,
     completed: req.body.completed,
@@ -36,11 +36,11 @@ router.post('/', (req, res) => {
 router.put('/:resourceId', (req, res) => {
   db.Resource.update(req.body, {
     where: {
-      id: req.body.id
+      id: req.params.resourceId
     }
   })
     .then(function(results) {
-      res.json(results);
+      res.send(200).send({ success: true });
     })
     .catch(function(err) {
       console.log(err);
@@ -51,11 +51,11 @@ router.put('/:resourceId', (req, res) => {
 router.delete('/:resourceId', (req, res) => {
   db.Resource.destroy({
     where: {
-      id: req.params.id
+      id: req.params.resourceId
     }
   })
     .then(function(results) {
-      res.json(results);
+      res.status(200).send({ success: true });
     })
     .catch(function(err) {
       console.log(err);

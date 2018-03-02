@@ -11,15 +11,15 @@ const ensureAuthenticated = require('../util/helpers').ensureAuthenticated;
 /////////////////////////////////////
 router.get('/', ensureAuthenticated, (req, res) => {
   db.Project.findAll({ where: { user_id: req.user.id } })
-  .then(result => {
-    res.render('project', {
-      projects: result
+    .then(result => {
+      res.render('project', {
+        projects: result
+      });
+    })
+    .catch(function(err) {
+      console.log(err);
+      res.status(500).render('500', { error: err });
     });
-  });
-  .catch(function(err) {
-  console.log(err);
-  res.status(500).render('500', { error: err });
-});
 });
 
 router.post('/', ensureAuthenticated, (req, res) => {
@@ -36,10 +36,10 @@ router.put('/:projectId', (req, res) => {
       id: req.body.id
     }
   })
-    .then(function (results) {
+    .then(function(results) {
       res.json(results);
     })
-    .catch(function (err) {
+    .catch(function(err) {
       console.log(err);
       res.status(500).send('Error!');
     });
@@ -51,10 +51,10 @@ router.delete('/:projectId', (req, res) => {
       id: req.params.id
     }
   })
-    .then(function (results) {
+    .then(function(results) {
       res.json(results);
     })
-    .catch(function (err) {
+    .catch(function(err) {
       console.log(err);
       res.status(500).send('Error!');
     });
@@ -70,11 +70,11 @@ router.get('/milestone/:projectId', ensureAuthenticated, (req, res) => {
       res.render('milestone-block', {
         milestone: result
       });
+    })
+    .catch(function(err) {
+      console.log(err);
+      res.status(500).render('500', { error: err });
     });
-  .catch (function(err) {
-    console.log(err);
-    res.status(500).render('500', { error: err });
-  });
 });
 
 router.post('/milestone/:projectId', (req, res) => {
@@ -90,10 +90,10 @@ router.put('/milestone/:projectId', (req, res) => {
       id: req.body.id
     }
   })
-    .then(function (results) {
+    .then(function(results) {
       res.json(results);
     })
-    .catch(function (err) {
+    .catch(function(err) {
       console.log(err);
       res.status(500).send('Error!');
     });
@@ -105,10 +105,10 @@ router.delete('/milestone/:projectId', (req, res) => {
       id: req.params.id
     }
   })
-    .then(function (results) {
+    .then(function(results) {
       res.json(results);
     })
-    .catch(function (err) {
+    .catch(function(err) {
       console.log(err);
       res.status(500).send('Error!');
     });
