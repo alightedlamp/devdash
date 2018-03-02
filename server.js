@@ -60,7 +60,7 @@ app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 db.sequelize
-  .sync({ force: true })
+  .sync()
   .then(() =>
     app.listen(PORT, () =>
       console.log(`App running on port ${PORT} The time is: ${Date.now()}`)
