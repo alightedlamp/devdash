@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'development';
+
 require('dotenv').config();
 const keys = require('./config/keys');
 const express = require('express');
@@ -11,32 +13,46 @@ const app = express();
 
 const db = require('./models');
 
-const GitHubStrategy = require('passport-github').Strategy;
-passport.use(
-  new GitHubStrategy(
-    {
-      clientID: keys.github.id,
-      clientSecret: keys.github.secret,
-      callbackURL: 'https://7aba3bd3.ngrok.io/user/auth/github/callback'
-    },
-    function(accessToken, refreshToken, profile, done) {
-      const options = {
-        where: {
-          github_id: profile.id
-        },
-        defaults: {
-          github_username: profile.username,
-          name: profile.displayName,
-          avatar: profile._json.avatar_url,
-          email: profile._json.email
-        }
-      };
-      db.User.findOrCreate(options)
-        .spread((user, created) => done(null, user))
-        .catch(err => done(err, null));
-    }
-  )
-);
+if (process.env.NODE_ENV === 'development') {
+  const LocalStrategy = require('passport-local').Strategy;
+  const username = 'alightedlamp';
+  passport.use(
+    new LocalStrategy(function(username, password, done) {
+      console.log('searching for user');
+      db.User.findOne({ github_username: username }, function(err, user) {
+        console.log(user);
+        return done(null, user);
+      });
+    })
+  );
+} else {
+  const GitHubStrategy = require('passport-github').Strategy;
+  passport.use(
+    new GitHubStrategy(
+      {
+        clientID: keys.github.id,
+        clientSecret: keys.github.secret,
+        callbackURL: 'https://47628ed4.ngrok.io/user/auth/github/callback'
+      },
+      function(accessToken, refreshToken, profile, done) {
+        const options = {
+          where: {
+            github_id: profile.id
+          },
+          defaults: {
+            github_username: profile.username,
+            name: profile.displayName,
+            avatar: profile._json.avatar_url,
+            email: profile._json.email
+          }
+        };
+        db.User.findOrCreate(options)
+          .spread((user, created) => done(null, user))
+          .catch(err => done(err, null));
+      }
+    )
+  );
+}
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -62,5 +78,7 @@ app.set('view engine', 'handlebars');
 db.sequelize
   .sync({ force: true })
   .then(() =>
-    app.listen(PORT, () => console.log(`App running on port ${PORT} The time is: ${Date.now()}`))
+    app.listen(PORT, () =>
+      console.log(`App running on port ${PORT} The time is: ${Date.now()}`)
+    )
   );

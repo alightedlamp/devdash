@@ -5,12 +5,22 @@ const router = express.Router();
 const db = require('../models');
 const ensureAuthenticated = require('../util/helpers').ensureAuthenticated;
 
-router.get('/auth/github', passport.authenticate('github'));
-router.get(
-  '/auth/github/callback',
-  passport.authenticate('github', { failureRedirect: '/' }),
-  (req, res) => res.redirect('/dashboard')
-);
+if (process.env.NODE_ENV === 'development') {
+  router.get(
+    '/auth/dev',
+    passport.authenticate('local', { failureRedirect: '/' }),
+    function(req, res) {
+      res.redirect('/');
+    }
+  );
+} else {
+  router.get('/auth/github', passport.authenticate('github'));
+  router.get(
+    '/auth/github/callback',
+    passport.authenticate('github', { failureRedirect: '/' }),
+    (req, res) => res.redirect('/dashboard')
+  );
+}
 
 router.get('/', (req, res) => {
   // In the future, this can be a public profile page with user info
