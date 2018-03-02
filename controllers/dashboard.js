@@ -6,14 +6,6 @@ const axios = require('axios');
 const db = require('../models');
 
 const ensureAuthenticated = require('../util/helpers').ensureAuthenticated;
-<<<<<<< Updated upstream
-
-router.get('/', ensureAuthenticated, (req, res) => {
-  // TO DO: Figure out if this actually works
-  const q = { where: { id: req.user.id } };
-  const projectsPromise = db.Project.findAll(q);
-  const resourcesPromise = db.Resource.findAll(q);
-=======
 
 const BASE_URL = 'https://api.github.com';
 const getEvents = function(username, page) {
@@ -31,7 +23,6 @@ router.get('/', ensureAuthenticated, (req, res) => {
   const resourcesPromise = db.Resource.findAll(q);
   // This should increment page number until there are no more results
   const githubStats = getEvents(req.user.github_username, 1);
->>>>>>> Stashed changes
 
   Promise.all([projectsPromise, resourcesPromise])
     .then(data => {
