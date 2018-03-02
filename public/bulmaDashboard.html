@@ -89,7 +89,68 @@
 		<div class="column"></div>
 
 		<div class="column is-5 card">
-			<a href="#"><strong>Project List</strong></a>
+			<strong>Project List</strong>
+
+			<a class="button modal-button project-button" data-target="modal-ter">Add Project</a>
+				<div class="modal project-modal">
+					<div class="modal-background"></div>
+					<div class="modal-card">
+						<header class="modal-card-head">
+							<p class="modal-card-title">Add a Project</p>
+						</header>
+						<section class="modal-card-body">
+							
+							<!-- Project Name Input -->
+							<div class="field">
+								<label class="label">Name of Project</label>
+								<div class="control">
+									<input class="input" type="text" placeholder="">
+								</div>
+							</div>
+
+							<!-- Progress Input -->
+							<div class="field">
+								<label class="label">Progress</label>
+								<div class="control">
+									<input class="input" type="text" placeholder="(0-100)">
+								</div>
+							</div>
+
+							<!-- Dropdown -->
+							<div class="field">
+								<label class="label">Priority</label>
+								<div class="control">
+									<div class="select">
+										<select>
+											<option value="high">High</option>
+											<option value="normal">Normal</option>
+											<option value="low">Low</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+							<div class="field">
+									<label class="label">Completed?</label>
+									<div class="control">
+										<label class="radio">
+											<input type="radio" name="true" value="true">
+											Yes
+										</label>
+										<label class="radio">
+											<input type="radio" name="false" value="false">
+											No
+										</label>
+									</div>
+								</div>
+
+						</section>
+						<footer class="modal-card-foot">
+							<button class="button is-success">Save changes</button>
+							<button class="button project-cancel">Cancel</button>
+						</footer>
+					</div>
+				</div>
 
 			<br><br>	
 			<div class="card">
@@ -142,9 +203,70 @@
 											<a href="#" class="dropdown-item">
 											  Go to Project
 											</a>
-											<a class="dropdown-item">
-											  Edit
+
+											<a  class="dropdown-item edit">
+												Edit
+													<div class="modal edit-modal">
+															<div class="modal-background"></div>
+															<div class="modal-card">
+																<header class="modal-card-head">
+																	<p class="modal-card-title">Edit</p>
+																</header>
+																<section class="modal-card-body">
+																	
+																				<!-- Project Name Input -->
+																				<div class="field">
+																					<label class="label">Name of Project</label>
+																					<div class="control">
+																						<input class="input" type="text" placeholder="">
+																					</div>
+																				</div>
+													
+																				<!-- Progress Input -->
+																				<div class="field">
+																					<label class="label">Progress</label>
+																					<div class="control">
+																						<input class="input" type="text" placeholder="">
+																					</div>
+																				</div>
+													
+																				<!-- Dropdown -->
+																				<div class="field">
+																					<label class="label">Priority</label>
+																					<div class="control">
+																						<div class="select">
+																							<select>
+																								<option value="high">High</option>
+																								<option value="normal">Normal</option>
+																								<option value="low">Low</option>
+																							</select>
+																						</div>
+																					</div>
+																				</div>
+																	
+																	<div class="field">
+																		<label class="label">Completed?</label>
+																		<div class="control">
+																			<label class="radio">
+																				<input type="radio" name="true" value="true">
+																				Yes
+																			</label>
+																			<label class="radio">
+																				<input type="radio" name="false" value="false">
+																				No
+																			</label>
+																		</div>
+																	</div>
+																	
+																</section>
+																<footer class="modal-card-foot">
+																	<button class="button is-success">Save changes</button>
+																	<button class="button edit-cancel">Cancel</button>
+																</footer>
+															</div>
+														</div>
 											</a>
+
 											<hr class="dropdown-divider">
 											<a href="#" class="dropdown-item">
 											  Delete
@@ -156,205 +278,75 @@
 	  					</header>
 					</div>
 
-					<div class="card">
-							<header class="card-header">
-								  <p class="card-header-title">Devdash</p>
-									  <a class="card-header-icon" aria-label="more options">
-											<div class="dropdown is-inactive">
-											  <div class="dropdown-trigger">
-												<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-												  <span>Options</span>
-												  <span class="icon is-small">
-													<i class="fas fa-angle-down" aria-hidden="true"></i>
-												  </span>
-												</button>
-											  </div>
-											  <div class="dropdown-menu" id="dropdown-menu" role="menu">
-												<div class="dropdown-content">
-												  <a href="#" class="dropdown-item">
-													Go to Project
-												  </a>
-												  <a class="dropdown-item">
-													Edit
-												  </a>
-												  <hr class="dropdown-divider">
-												  <a href="#" class="dropdown-item">
-													Delete
-												  </a>
-												</div>
-											  </div>
-											</div>
-									  </a>
-							</header>
-					</div>
 
-
-					<div class="card">
-							<header class="card-header">
-								  <p class="card-header-title">Project #4</p>
-									  <a class="card-header-icon" aria-label="more options">
-											<div class="dropdown is-inactive">
-											  <div class="dropdown-trigger">
-												<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-												  <span>Options</span>
-												  <span class="icon is-small">
-													<i class="fas fa-angle-down" aria-hidden="true"></i>
-												  </span>
-												</button>
-											  </div>
-											  <div class="dropdown-menu" id="dropdown-menu" role="menu">
-												<div class="dropdown-content">
-												  <a href="#" class="dropdown-item">
-													Go to Project
-												  </a>
-												  <a class="dropdown-item">
-													Edit
-												  </a>
-												  <hr class="dropdown-divider">
-												  <a href="#" class="dropdown-item">
-													Delete
-												  </a>
-												</div>
-											  </div>
-											</div>
-									  </a>
-							</header>
-					</div>	
+	
 		</div>
 
 		<!-- Resources -->
 		  <div class="column is-5 card">
-			  <a href="#"><strong>Resource List</strong></a>
+				<strong>Resource List</strong>
+				<a class="button modal-button resource-button" data-target="modal-ter">Add Resource</a>
+				<div class="modal resource-modal">
+					<div class="modal-background"></div>
+					<div class="modal-card">
+						<header class="modal-card-head">
+							<p class="modal-card-title">Add a Resource</p>
+						</header>
+						<section class="modal-card-body">
+							
+										<!-- Project Name Input -->
+										<div class="field">
+											<label class="label">Name of Resource</label>
+											<div class="control">
+												<input class="input" type="text" placeholder="">
+											</div>
+										</div>
+			
+										<!-- Progress Input -->
+										<div class="field">
+											<label class="label">Resource URL</label>
+											<div class="control">
+												<input class="input" type="text" placeholder="">
+											</div>
+										</div>
+			
+										<!-- Dropdown -->
+										<div class="field">
+											<label class="label">Priority</label>
+											<div class="control">
+												<div class="select">
+													<select>
+														<option>High</option>
+														<option>Normal</option>
+														<option>Low</option>
+													</select>
+												</div>
+											</div>
+										</div>
+							
+							<div class="field">
+								<label class="label">Completed?</label>
+								<div class="control">
+									<label class="radio">
+										<input type="radio" name="question">
+										Yes
+									</label>
+									<label class="radio">
+										<input type="radio" name="question">
+										No
+									</label>
+								</div>
+							</div>
+							
+						</section>
+						<footer class="modal-card-foot">
+							<button class="button is-success">Save changes</button>
+							<button class="button resource-cancel">Cancel</button>
+						</footer>
+					</div>
+				</div>
 
 			<br><br>
-			<div class="card">
-	  				<header class="card-header">
-	    					<p class="card-header-title">Testing</p>
-	    						<a class="card-header-icon" aria-label="more options">
-									  <div class="dropdown is-inactive">
-										<div class="dropdown-trigger">
-										  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-											<span>Options</span>
-											<span class="icon is-small">
-											  <i class="fas fa-angle-down" aria-hidden="true"></i>
-											</span>
-										  </button>
-										</div>
-										<div class="dropdown-menu" id="dropdown-menu" role="menu">
-										  <div class="dropdown-content">
-											<a href="#" class="dropdown-item">
-											  Go to Article
-											</a>
-											<a class="dropdown-item">
-											  Edit
-											</a>
-											<hr class="dropdown-divider">
-											<a href="#" class="dropdown-item">
-											  Delete
-											</a>
-										  </div>
-										</div>
-									  </div>
-	    						</a>
-	  					</header>
-					</div>
-
-					<div class="card">
-							<header class="card-header">
-								  <p class="card-header-title">More Testing</p>
-									  <a class="card-header-icon" aria-label="more options">
-											<div class="dropdown is-inactive">
-											  <div class="dropdown-trigger">
-												<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-												  <span>Options</span>
-												  <span class="icon is-small">
-													<i class="fas fa-angle-down" aria-hidden="true"></i>
-												  </span>
-												</button>
-											  </div>
-											  <div class="dropdown-menu" id="dropdown-menu" role="menu">
-												<div class="dropdown-content">
-												  <a href="#" class="dropdown-item">
-													Go to Article
-												  </a>
-												  <a class="dropdown-item">
-													Edit
-												  </a>
-												  <hr class="dropdown-divider">
-												  <a href="#" class="dropdown-item">
-													Delete
-												  </a>
-												</div>
-											  </div>
-											</div>
-									  </a>
-							</header>
-					</div>
-
-					<div class="card">
-							<header class="card-header">
-								  <p class="card-header-title">Karma</p>
-									  <a class="card-header-icon" aria-label="more options">
-											<div class="dropdown is-inactive">
-											  <div class="dropdown-trigger">
-												<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-												  <span>Options</span>
-												  <span class="icon is-small">
-													<i class="fas fa-angle-down" aria-hidden="true"></i>
-												  </span>
-												</button>
-											  </div>
-											  <div class="dropdown-menu" id="dropdown-menu" role="menu">
-												<div class="dropdown-content">
-												  <a href="#" class="dropdown-item">
-													Go to Article
-												  </a>
-												  <a class="dropdown-item">
-													Edit
-												  </a>
-												  <hr class="dropdown-divider">
-												  <a href="#" class="dropdown-item">
-													Delete
-												  </a>
-												</div>
-											  </div>
-											</div>
-									  </a>
-							</header>
-					</div>
-
-
-					<div class="card">
-							<header class="card-header">
-								  <p class="card-header-title">Even More Testing</p>
-									  <a class="card-header-icon" aria-label="more options">
-											<div class="dropdown is-inactive">
-											  <div class="dropdown-trigger">
-												<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-												  <span>Options</span>
-												  <span class="icon is-small">
-													<i class="fas fa-angle-down" aria-hidden="true"></i>
-												  </span>
-												</button>
-											  </div>
-											  <div class="dropdown-menu" id="dropdown-menu" role="menu">
-												<div class="dropdown-content">
-												  <a href="#" class="dropdown-item">
-													Go to Article
-												  </a>
-												  <a class="dropdown-item">
-													Edit
-												  </a>
-												  <hr class="dropdown-divider">
-												  <a href="#" class="dropdown-item">
-													Delete
-												  </a>
-												</div>
-											  </div>
-											</div>
-									  </a>
-							</header>
-					</div>
 
 			</div>
 		<div class="column"></div>
@@ -376,7 +368,30 @@
 	$(".dropdown").click(function() {
 	$(this).toggleClass('is-active');
 	})
-	
+
+	$(".resource-button").click(function() {
+		$(".resource-modal").toggleClass('is-active');
+	})
+
+	$(".resource-cancel").click(function() {
+		$(".resource-modal").toggleClass('is-active');
+	})
+
+	$(".project-button").click(function() {
+		$(".project-modal").toggleClass('is-active');
+	})
+
+	$(".project-cancel").click(function() {
+		$(".project-modal").toggleClass('is-active');
+	})
+
+	$(".edit").click(function() {
+		$("edit-modal").toggleClass('is-active');
+	})
+
+	$('.edit-cancel').click(function() {
+		$(".edit-modal").toggleClass('is-active');
+	})
 </script>
 </body>
 
