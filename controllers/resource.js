@@ -6,7 +6,9 @@ const db = require('../models');
 const ensureAuthenticated = require('../util/helpers').ensureAuthenticated;
 
 router.get('/', (req, res) => {
-  db.Resource.findAll({}).then(function(results) {
+  db.Resource.findAll({ where: { user_id: req.user.id } }).then(function(
+    results
+  ) {
     res.json(results);
   });
 });
