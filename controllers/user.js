@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 
 router.get('/edit', (req, res) => {
   // In the future, this can be an edit page for the user's profile
-  res.redireect('/');
+  res.redirect('/'); //changed typo.
   // res.render('edit', {
   //   user: req.user
   // });
