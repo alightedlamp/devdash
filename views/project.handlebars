@@ -11,6 +11,7 @@
 			</div>
 			{{else}}
 			<h2 class="subtitle">{{ project.title }}</h2>
+
 			<div class="card">
 				<header class="card-header">
 					<!-- Progress Bar -->
@@ -18,12 +19,13 @@
 						Progress
 						<progress class="progress is-success" value="40" max="100">15%</progress>
 					</p>
-					<a class="button modal-button milestone-button" data-target="modal-ter">Add Milestone</a>
+
+					<a class="button modal-button milestone-button is-success" data-target="modal-ter">Add Milestone</a>
+
 					{{> modals/add-milestone}}
+
 				</header>
-				<div class="card-content">
-					{{#each milestone}} {{> milestone-block}} {{/each}}
-				</div>
+				{{#each milestone}} {{> milestone-block}} {{/each}}
 			</div>
 		</div>
 		{{/if}}
