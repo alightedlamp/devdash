@@ -16,7 +16,7 @@ router.get('/', ensureAuthenticated, (req, res) => {
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).render('500', { error: err });
+      res.status(500).send({ error: 'Could not get projects' });
     });
 });
 
@@ -33,7 +33,7 @@ router.post('/', ensureAuthenticated, (req, res) => {
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).send('Error!');
+      res.status(500).send({ error: 'Could not add new project' });
     });
 });
 
@@ -48,7 +48,7 @@ router.put('/:projectId', (req, res) => {
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).send('Error!');
+      res.status(500).send({ error: 'Could not update project' });
     });
 });
 
@@ -63,7 +63,7 @@ router.delete('/:projectId', (req, res) => {
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).send('Error!');
+      res.status(500).send({ error: 'Could not delete project' });
     });
 });
 
@@ -78,7 +78,7 @@ router.get('/milestone/:projectId', ensureAuthenticated, (req, res) => {
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).render('500', { error: err });
+      res.status(500).send({ error: 'Could not get project milestones' });
     });
 });
 
@@ -89,7 +89,9 @@ router.post('/milestone/:projectId', (req, res) => {
     target_completion_date: req.body.target_completion_date
   })
     .then(result => res.json(result))
-    .catch(err => res.status(500).json(err));
+    .catch(err =>
+      res.status(500).send({ error: 'Could not add new milestone' })
+    );
 });
 
 router.put('/milestone/:projectId', (req, res) => {
@@ -118,7 +120,7 @@ router.delete('/milestone/:projectId', (req, res) => {
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).send('Error!');
+      res.status(500).send({ error: 'Could not delete milestone' });
     });
 });
 
