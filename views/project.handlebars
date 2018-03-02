@@ -4,45 +4,53 @@
 
 	<!-- Project Column -->
 	<section class="section">
-		<div class="columns">
-			<div class="column is-12 card">
-				{{ project.title }}
-				<div class="card">
-					<header class="card-header">
-						<!-- Progress Bar -->
-						<p class="card-header-title">
-							Progress
-							<progress class="progress is-success" value="40" max="100">15%</progress>
-						</p>
-						<a class="card-header-icon" aria-label="more options">
-							<div class="dropdown is-inactive">
-								<div class="dropdown-trigger">
-									<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-										<span>Add a Milestone</span>
-										<span class="icon is-small">
-											<i class="fas fa-angle-down" aria-hidden="true"></i>
-										</span>
-									</button>
-								</div>
-								<div class="dropdown-menu" id="dropdown-menu" role="menu">
-									<div class="dropdown-content">
-										<a href="#" class="dropdown-item">
-											Add a Milestone
-										</a>
-										<a class="dropdown-item">
-											Edit
-										</a>
-										<hr class="dropdown-divider">
-										<a href="#" class="dropdown-item">
-											Delete
-										</a>
+		<div class="container">
+			{{#if error}}
+			<div class="notification is-danger">
+				{{ error }}
+			</div>
+			{{else}}
+			<h2 class="subtitle">{{ project.title }}</h2>
+			<div class="columns">
+				<div class="column is-12 card">
+					<div class="card">
+						<header class="card-header">
+							<!-- Progress Bar -->
+							<p class="card-header-title">
+								Progress
+								<progress class="progress is-success" value="40" max="100">15%</progress>
+							</p>
+							<a class="card-header-icon" aria-label="more options">
+								<div class="dropdown is-inactive">
+									<div class="dropdown-trigger">
+										<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+											<span>Add a Milestone</span>
+											<span class="icon is-small">
+												<i class="fas fa-angle-down" aria-hidden="true"></i>
+											</span>
+										</button>
+									</div>
+									<div class="dropdown-menu" id="dropdown-menu" role="menu">
+										<div class="dropdown-content">
+											<a href="#" class="dropdown-item">
+												Add a Milestone
+											</a>
+											<a class="dropdown-item">
+												Edit
+											</a>
+											<hr class="dropdown-divider">
+											<a href="#" class="dropdown-item">
+												Delete
+											</a>
+										</div>
 									</div>
 								</div>
-							</div>
-						</a>
-					</header>
-					{{#each milestone}} {{> milestone-block}} {{/each}}
+							</a>
+						</header>
+						{{#each milestone}} {{> milestone-block}} {{/each}}
+					</div>
 				</div>
 			</div>
+			{{/if}}
 	</section>
 </section>

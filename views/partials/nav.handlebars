@@ -20,17 +20,17 @@
                 </a>
                 {{#if user}}
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link" href="/documentation/overview/start/">
+                    <a class="navbar-link" href="/user/{{user.id}}">
                         {{user.name}}
                     </a>
                     <div class="navbar-dropdown is-boxed">
-                        <a class="navbar-item" href="/documentation/overview/start/">
+                        <a class="navbar-item" href="/dashboard">
                             Dashboard
                         </a>
-                        <a class="navbar-item" href="/documentation/overview/start/">
+                        <a class="navbar-item" href="/user/{{user.id}}">
                             Profile
                         </a>
-                        <a class="navbar-item" href="/documentation/overview/start/">
+                        <a class="navbar-item" href="/user/{{user.id}}/settings">
                             Settings
                         </a>
                     </div>

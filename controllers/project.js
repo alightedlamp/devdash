@@ -34,16 +34,20 @@ router.get('/:projectId', ensureAuthenticated, (req, res) => {
   });
   Promise.all([projectData, milestoneData])
     .then(data => {
+      const projectData = data[0].dataValues;
+      const milestoneData = data[1].map(milestone => milestone.dataValues);
       res.render('project', {
-        project: data,
+        user: req.user,
+        project: projectData,
         milestones: milestoneData
       });
     })
     .catch(error => {
       console.log(error);
-      res
-        .status(500)
-        .send({ error: "Something went wrong. Maybe this isn't your item." });
+      res.status(500).render('project', {
+        error:
+          "Something went wrong. Maybe this isn't your item. If it is, we broke something. Bummer!"
+      });
     });
 });
 
@@ -80,9 +84,10 @@ router.put('/:projectId', (req, res) => {
     })
     .catch(function(err) {
       console.log(err);
-      res
-        .status(500)
-        .send({ error: "Something went wrong. Maybe this isn't your item." });
+      res.status(500).send({
+        error:
+          "Something went wrong. Maybe this isn't your item. If it is, we broke something. Bummer!"
+      });
     });
 });
 
@@ -98,9 +103,10 @@ router.delete('/:projectId', (req, res) => {
     })
     .catch(function(err) {
       console.log(err);
-      res
-        .status(500)
-        .send({ error: "Something went wrong. Maybe this isn't your item." });
+      res.status(500).send({
+        error:
+          "Something went wrong. Maybe this isn't your item. If it is, we broke something. Bummer!"
+      });
     });
 });
 
@@ -145,9 +151,10 @@ router.put('/milestone/:projectId', (req, res) => {
     })
     .catch(function(err) {
       console.log(err);
-      res
-        .status(500)
-        .send({ error: "Something went wrong. Maybe this isn't your item." });
+      res.status(500).send({
+        error:
+          "Something went wrong. Maybe this isn't your item. If it is, we broke something. Bummer!"
+      });
     });
 });
 
@@ -163,9 +170,10 @@ router.delete('/milestone/:projectId', (req, res) => {
     })
     .catch(function(err) {
       console.log(err);
-      res
-        .status(500)
-        .send({ error: "Something went wrong. Maybe this isn't your item." });
+      res.status(500).send({
+        error:
+          "Something went wrong. Maybe this isn't your item. If it is, we broke something. Bummer!"
+      });
     });
 });
 
