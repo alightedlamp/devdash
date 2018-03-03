@@ -14,10 +14,19 @@ $(document).ready(function() {
       .text()
       .trim()
       .replace(/\D/g, '');
+    var target_completion_date = $(`#project-${id} .project-target_completion_date`)
+      .text()
+      .trim();
+    var priority = $(`#project-${id} .project-priority`)
+      .text()
+      .trim();
 
     $('#projectEditNameField').val(name);
     $('#projectEditDescriptionField').val(description);
     $('#projectEditProgressField').val(progress);
+    $('#projectEditDueDateField').val(target_completion_date);
+    $('#projectEditPriorityField').val(priority);
+
     // Bring up modal containing these two fields
     $('.edit-modal').toggleClass('is-active');
   });
@@ -35,7 +44,9 @@ $(document).ready(function() {
       id: $('#projectEditIdField').val(),
       title: $('#projectEditNameField').val(),
       description: $('#projectEditDescriptionField').val(),
-      progress: $('#projectEditProgressField').val()
+      progress: $('#projectEditProgressField').val(),
+      target_completion_date: $('#projectEditDueDateField').val(),
+      priority: $('#projectEditPriorityField').val()
     };
     submitEditedProject(object);
   });
@@ -67,13 +78,19 @@ $(document).ready(function() {
     var id = $(this).attr('data-id');
     var title = $(`a#${id}.resourceLink`).text();
     var url = $(`a#${id}.resourceLink`).attr('href');
+    var priority = $(`#a${id} .resource-priority`)
+    .text()
+    .trim();
+
     // Write title value to title field via $("fieldSelector").val(name)
-    console.log('id ', id, 'title ', title, 'url ', url);
-    $('#resourceTitleEditField').val(title);
+    console.log('id ', id, 'title ', title, 'url ', url, 'priority ', priority);
+    $('#resourceEditTitleField').val(title);
     // Write url value to url field
-    $('#resourceURLEditField').val(url);
+    $('#resourceEditURLField').val(url);
+    // Write priority value to priority field
+    $('#resourceEditPriorityField').val(priority);
     // Write id to a hidden(via css of display:hidden) field $("hiddenIdFieldSelector").val(id)
-    $('#resourceIdEditNameField').val(id);
+    $('#resourceEditIdNameField').val(id);
     // Bring up modal containing these two fields
   });
 
@@ -119,15 +136,25 @@ $(document).ready(function() {
 
   $('.editMilestone').click(function() {
     var id = $(this).attr('data-id');
-    var title = $(`p#${id}.milestoneTitle`).text();
+    var title = $(`p#${id}.milestone-title`).text();
     var projectId = $(this).attr('projectId');
+    var description = $(`p#${id}.milestone-description`).val()
+    .text()
+    .trim();
+    var target_completion_date = $(`p#${id}.milestone-target_completion_date`).val()
+    .text()
+    .trim();
     // Write title value to title field via $("fieldSelector").val(name)
-    console.log('id ', id, 'title ', title, 'projectId ', projectId);
-    $('#milestoneTitleEditIdField').val(title);
+    console.log('id ', id, 'title ', title, 'description ', description, 'target_completion_date ', target_completion_date, 'projectId ', projectId);
+    $('#milestoneEditTitleField').val(title);
+    // Write description value to description field
+    $('#milestoneEditDescriptionField').val(description);
+    // Write target completion date value to completion date value field
+    $('#milestoneEditCompletionDateField').val(target_completion_date);
     // Write id to a hidden(via css of display:hidden) field $("hiddenIdFieldSelector").val(id)
-    $('#milestoneIdEditField').val(id);
+    $('#milestoneEditIdField').val(id);
     // Write projectId to a hidden(via css of display:hidden) field $("hiddenIdFieldSelector").val(id)
-    $('#milestoneProjectIdEditField').val(projectId);
+    $('#milestoneEditProjectIdField').val(projectId);
     // Bring up modal containing these two fields
   });
 
