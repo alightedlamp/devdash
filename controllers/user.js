@@ -31,6 +31,7 @@ router.get('/edit/:userId', (req, res) => {
 router.get('/logout', (req, res) => {
   req.logout();
   req.session.destroy(function(err) {
+    req.user = null;
     console.log(err);
     res.redirect('/');
   });
