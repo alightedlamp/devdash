@@ -4,12 +4,22 @@ $(document).ready(function() {
   // ----------FOR PROJECTS-----------
   $('.editProject').click(function() {
     var id = $(this).data('id');
-    var name = $('p.projectTitle#' + id).text();
-    // Write name value to name field via $("fieldSelector").val(name)
+    var name = $(`#project-${id} .project-title`)
+      .text()
+      .trim();
+    var description = $(`#project-${id} .project-description`)
+      .text()
+      .trim();
+    var progress = $(`#project-${id} .project-progress`)
+      .text()
+      .trim()
+      .replace(/\D/g, '');
+
     $('#projectEditNameField').val(name);
-    // Write id to a hidden(via css of display:hidden) field $("hiddenIdFieldSelector").val(id)
-    $('#projectEditIdField').val(id);
+    $('#projectEditDescriptionField').val(description);
+    $('#projectEditProgressField').val(progress);
     // Bring up modal containing these two fields
+    $('.edit-modal').toggleClass('is-active');
   });
 
   $('.deleteProject').click(function() {
@@ -18,12 +28,14 @@ $(document).ready(function() {
   });
 
   // The Submit button for the Edit Project modal window must have ID "submitEditedProject"
-  $('#submitEditedProject').click(function() {
+  $('#submitEditProject').click(function() {
     // The Project Name field must have id "projectEditNameField"
-    // The (hidden) Project ID field must have id "projectEditIdField"
+    var id = $(this).data('projectId');
     var object = {
       id: $('#projectEditIdField').val(),
-      title: $('#projectEditNameField').val()
+      title: $('#projectEditNameField').val(),
+      description: $('#projectEditDescriptionField').val(),
+      progress: $('#projectEditProgressField').val()
     };
     submitEditedProject(object);
   });
@@ -301,6 +313,7 @@ $(document).ready(function() {
   //     window.location.href = "/" + currentMilestone.id
   // }
 
+  // Modal and dropdown handlers
   $('.resource-button').click(function() {
     $('.resource-modal').toggleClass('is-active');
   });
@@ -315,10 +328,6 @@ $(document).ready(function() {
 
   $('.project-cancel').click(function() {
     $('.project-modal').toggleClass('is-active');
-  });
-
-  $('.edit').click(function() {
-    $('edit-modal').toggleClass('is-active');
   });
 
   $('.edit-cancel').click(function() {

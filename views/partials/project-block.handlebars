@@ -1,15 +1,16 @@
 {{!-- Start of Projects repeating element --}}
-<div class="notification">
-	<h2 class="title">
+<div class="notification" id="project-{{id}}">
+	<h2 class="title project-title">
 		<a href="/project/{{id}}">{{title}}</a>
 	</h2>
 	<div class="content">
+		<p class="project-description">{{description}}</p>
+		<p class="project-progress">
+			<strong>Progress: </strong>{{progress}} %</p>
 		{{#if target_completion_date}}
 		<p>
 			<strong>Due:</strong> {{target_completion_date}}</p>
-		{{/if}} {{#if description}}
-		<p>{{description}}</p>
-		{{/if}}
+		{{/if}} {{#if description}} {{/if}}
 	</div>
 	<div class="dropdown is-inactive">
 		<div class="dropdown-trigger">
@@ -35,7 +36,7 @@
 		</div>
 	</div>
 	<a href="/project/{{id}}" class="button">Go to Project</a>
-
-	{{!-- Get all milestones for project id and display them. --}} {{#each milestone}} {{> milestone-block}} {{/each}}
+	{{> modals/edit-project}} {{!-- Get all milestones for project id and display them. --}} {{#each milestone}} {{> milestone-block}}
+	{{/each}}
 </div>
 {{!-- end of repeating element --}}
