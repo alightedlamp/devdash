@@ -30,7 +30,10 @@ router.get('/edit/:userId', (req, res) => {
 
 router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('/');
+  req.session.destroy(function(err) {
+    console.log(err);
+    res.redirect('/');
+  });
 });
 
 module.exports = router;
