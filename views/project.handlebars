@@ -9,10 +9,7 @@
 			<div class="notification is-danger">
 				{{ error }}
 			</div>
-			{{else}}
-			<h2 class="subtitle">
-				<strong>Project: </strong>{{ project.title }}</h2>
-			{{#unless milestones}}
+			{{else}} {{#unless milestones}}
 			<div class="notification is-info">
 				<p>Hey! This is your brand new project page. Here you can manage the tasks you need to complete for your project. Start
 					by adding a new
@@ -21,12 +18,25 @@
 			</div>
 			{{/unless}}
 			<div class="content">
-				<a class="button modal-button milestone-button is-success" data-target="modal-ter">Add Milestone</a>
 			</div>
 			{{> modals/add-milestone}}
 			<div class="card">
 				<div class="card-content">
-					<progress class="progress is-success" value="40" max="100">15%</progress>
+					<div class="content">
+						<h2 class="subtitle">
+							<strong>Project: </strong>{{ project.title }}
+						</h2>
+						<p>{{ project.description }}</p>
+						<p>
+							<strong>Due:</strong> {{ project.target_completion_date}}</p>
+						<p>
+							<a class="button modal-button milestone-button is-success" data-target="modal-ter">Add Milestone</a>
+						</p>
+						<p>
+							<strong>Progress:</strong>
+						</p>
+						<progress class="progress is-success" value="40" max="100">15%</progress>
+					</div>
 					{{#if milestones}} {{#each milestones}} {{> milestone-block}} {{/each}} {{/if}}
 				</div>
 			</div>
