@@ -92,7 +92,7 @@ $(document).ready(function() {
     // Write id to a hidden(via css of display:hidden) field $("hiddenIdFieldSelector").val(id)
     $('#resourceEditIdNameField').val(id);
     // Bring up modal containing these two fields
-    $('.edit-modal').toggleClass('is-active');
+    $('.edit-resource').toggleClass('is-active');
   });
 
   $('#submitNewResource').click(function() {
@@ -157,7 +157,7 @@ $(document).ready(function() {
     // Write projectId to a hidden(via css of display:hidden) field $("hiddenIdFieldSelector").val(id)
     $('#milestoneEditProjectIdField').val(projectId);
     // Bring up modal containing these two fields
-    $('.edit-modal').toggleClass('is-active');
+    $('.edit-milestone').toggleClass('is-active');
   });
 
   // THE MODAL FOR SUBMIT NEW MILESTONE HAS TO HAVE A HIDDEN FIELD FOR PROJECTID
