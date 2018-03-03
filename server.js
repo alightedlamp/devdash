@@ -1,5 +1,9 @@
+let BASE_URL;
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
+  BASE_URL = 'https://401d4bfd.ngrok.io';
+} else {
+  BASE_URL = 'https://devprogdash.herokuapp.com';
 }
 const keys = require('./config/keys');
 const express = require('express');
@@ -19,7 +23,7 @@ passport.use(
     {
       clientID: keys.github.id,
       clientSecret: keys.github.secret,
-      callbackURL: 'https://devprogdash.herokuapp.com/user/auth/github/callback'
+      callbackURL: `${BASE_URL}/user/auth/github/callback`
     },
     function(accessToken, refreshToken, profile, done) {
       const options = {

@@ -3,7 +3,7 @@ const keys = require('./keys');
 module.exports = {
   development: {
     username: 'root',
-    password: null,
+    password: keys.localDbPassword,
     database: 'devdash_db',
     host: '127.0.0.1',
     dialect: 'mysql'

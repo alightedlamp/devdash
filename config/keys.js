@@ -7,5 +7,6 @@ module.exports = {
   jawsDbUser: process.env.JAWS_DB_USER,
   jawsDbName: process.env.JAWS_DB,
   jawsDbPassword: process.env.JAWS_DB_PASSWORD,
-  jawsDbHost: process.env.JAWS_DB_HOST
+  jawsDbHost: process.env.JAWS_DB_HOST,
+  localDbPassword: process.env.LOCAL_DB_PASSWORD
 };
