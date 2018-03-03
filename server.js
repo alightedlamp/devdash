@@ -50,7 +50,12 @@ passport.deserializeUser(function(id, done) {
     .catch(err => done(err, null));
 });
 
-app.use(session({ secret: keys.sessionSecret }));
+app.use(
+  session({
+    secret: keys.sessionSecret,
+    resave: false
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.urlencoded({ extended: false }));
