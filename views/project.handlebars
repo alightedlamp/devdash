@@ -9,15 +9,16 @@
 			<div class="notification is-danger">
 				{{ error }}
 			</div>
-			{{else}} {{#unless milestones}}
-			<div class="notification is-info">
-				<p>Hey! This is your brand new project page. Here you can manage the tasks you need to complete for your project. Start
-					by adding a new
-					<strong>Milestone</strong>!</strong>
-				</p>
-			</div>
-			{{/unless}}
+			{{else}}
 			<div class="content">
+				{{#unless milestones}}
+				<div class="notification is-info">
+					<p>Hey! This is your brand new project page. Here you can manage the tasks you need to complete for your project. Start
+						by clicking
+						<strong>Add a Milestone</strong> to add your first task!
+					</p>
+				</div>
+				{{/unless}}
 			</div>
 			{{> modals/add-milestone}}
 			<div class="card">
