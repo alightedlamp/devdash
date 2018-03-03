@@ -1,28 +1,3 @@
-* {
-    box-sizing: border-box;
-}
-
-html, body, .container {
-    height: 100%
-}
-
-div[class*='col-md'] {
-    background-color: grey;
-    outline: 1px solid black;
-}
-/* .topSpacer {
-    margin-top: 20px;
-} */
-
-.centered {
-    text-align: center;
-    margin: 0 auto;
-}
-
-.twentyFive {
-    height: 25%;
-}
-
-.seventyFive {
-    height: 75%;
+.notification a {
+  text-decoration: none !important;
 }

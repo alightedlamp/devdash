@@ -17,7 +17,7 @@ passport.use(
     {
       clientID: keys.github.id,
       clientSecret: keys.github.secret,
-      callbackURL: 'https://47628ed4.ngrok.io/user/auth/github/callback'
+      callbackURL: 'https://3cab854b.ngrok.io/user/auth/github/callback'
     },
     function(accessToken, refreshToken, profile, done) {
       const options = {
@@ -60,10 +60,16 @@ app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 if (process.env.NODE_ENV === 'test') {
-  module.exports = app.listen(PORT);
+  module.exports = db.sequelize
+    .sync({ force: true })
+    .then(() =>
+      app.listen(PORT, () =>
+        console.log(`App running on port ${PORT} at ${Date.now()}`)
+      )
+    );
 } else {
   db.sequelize
-    .sync({ force: true })
+    .sync()
     .then(() =>
       app.listen(PORT, () =>
         console.log(`App running on port ${PORT} at ${Date.now()}`)

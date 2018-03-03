@@ -1,237 +1,42 @@
-<div class="container">
-
-	<!-- Nav Container -->
-	<nav class="level">
-
-		<!-- Left Side -->
-		<div class="level-left">
-			<div class="level-item">
-				<p class="subtitle is-3">
-					<strong>Devdash</strong>
-				</p>
-			</div>
-		</div>
-
-		<!-- Right side -->
-		<div class="level-right">
-
-			<!-- Username -->
-			<p class="level-item">
-				<div class="field" id="form_id">
-					<p class="control has-icons-left has-icons-right">
-						<input class="input" id="email" type="email" placeholder="Email">
-						<span class="icon is-small is-left">
-							<i class="fas fa-envelope"></i>
-						</span>
-						<span class="icon is-small is-right">
-							<i class="fas fa-check"></i>
-						</span>
-					</p>
-				</div>
-			</p>
-
-			<!-- Password -->
-			<p class="level-item">
-				<div class="field" id="form_id">
-					<p class="control has-icons-left">
-						<input class="input" id="password" type="password" placeholder="Password">
-						<span class="icon is-small is-left">
-							<i class="fas fa-lock"></i>
-						</span>
-					</p>
-				</div>
-			</p>
-
-			<!-- Login Button -->
-			<p class="level-item">
-				<div class="field">
-					<p class="control">
-						<button class="button is-success" onclick="submitLogin()">
-							Login
-						</button>
-					</p>
-				</div>
-			</p>
-		</div>
-
-	</nav>
+<section class="section">
+	{{> nav}}
 
 	<!-- Project Column -->
-	<div class="columns">
-		<div class="column"></div>
+	<section class="section">
+		<div class="container">
+			{{#if user}}
+			<div class="columns">
+				<div class="column is-6 card" id="projectContainer">
+					<h2 class="subtitle">Projects</h2>
+					{{#unless projects}}
+					<div class="notification">
+						Hey, you don't have any projects! Surely you're working on some things! Add them here and keep track of your progress. You
+						can set goals by creating
+						<strong>Milestones</strong> with due dates, much like you would with GitHub. We'll help keep you accountable.
+					</div>
+					{{/unless}} {{#each projects}} {{> project-block}} {{/each}}
+					<a class="button modal-button project-button is-success" data-target="modal-ter">Add Project</a>
+					{{> modals/add-project}}
+				</div>
 
-		<div class="column is-5 card" id="projectContainer">
-			<a href="#">
-				<strong>Project List</strong>
-			</a>
-			<br>
-			<br> {{#each project}} {{> project-block}} {{/each}}
-		</div>
-
-		<!-- Resources -->
-		<div class="column is-5 card" id="resourceContainer">
-			<a href="#">
-				<strong>Resource List</strong>
-			</a>
-
-			<br>
-			<br>
-			<div class="card">
-				<header class="card-header">
-					<p class="card-header-title">Testing</p>
-					<a class="card-header-icon" aria-label="more options">
-						<div class="dropdown is-inactive">
-							<div class="dropdown-trigger">
-								<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-									<span>Options</span>
-									<span class="icon is-small">
-										<i class="fas fa-angle-down" aria-hidden="true"></i>
-									</span>
-								</button>
-							</div>
-							<div class="dropdown-menu" id="dropdown-menu" role="menu">
-								<div class="dropdown-content">
-									<a href="#" class="dropdown-item">
-										Go to Article
-									</a>
-									<a class="dropdown-item">
-										Edit
-									</a>
-									<hr class="dropdown-divider">
-									<a href="#" class="dropdown-item">
-										Delete
-									</a>
-								</div>
-							</div>
-						</div>
-					</a>
-				</header>
+				<!-- Resources -->
+				<div class="column is-6 card" id="resourceContainer">
+					<h2 class="subtitle">Resources</h2>
+					{{#unless resources}}
+					<div class="notification is-warning">
+						Hey, you don't have any resources added! Why not add some articles you want to read, or a tutorial?
+					</div>
+					{{/unless}} {{#each resources}} {{> resource-block}} {{/each}}
+					<a class="button modal-button resource-button is-success" data-target="modal-ter">Add Resource</a>
+					{{> modals/add-resource}}
+				</div>
 			</div>
-
-			<div class="card">
-				<header class="card-header">
-					<p class="card-header-title">More Testing</p>
-					<a class="card-header-icon" aria-label="more options">
-						<div class="dropdown is-inactive">
-							<div class="dropdown-trigger">
-								<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-									<span>Options</span>
-									<span class="icon is-small">
-										<i class="fas fa-angle-down" aria-hidden="true"></i>
-									</span>
-								</button>
-							</div>
-							<div class="dropdown-menu" id="dropdown-menu" role="menu">
-								<div class="dropdown-content">
-									<a href="#" class="dropdown-item">
-										Go to Article
-									</a>
-									<a class="dropdown-item">
-										Edit
-									</a>
-									<hr class="dropdown-divider">
-									<a href="#" class="dropdown-item">
-										Delete
-									</a>
-								</div>
-							</div>
-						</div>
-					</a>
-				</header>
-			</div>
-
-			<div class="card">
-				<header class="card-header">
-					<p class="card-header-title">Karma</p>
-					<a class="card-header-icon" aria-label="more options">
-						<div class="dropdown is-inactive">
-							<div class="dropdown-trigger">
-								<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-									<span>Options</span>
-									<span class="icon is-small">
-										<i class="fas fa-angle-down" aria-hidden="true"></i>
-									</span>
-								</button>
-							</div>
-							<div class="dropdown-menu" id="dropdown-menu" role="menu">
-								<div class="dropdown-content">
-									<a href="#" class="dropdown-item">
-										Go to Article
-									</a>
-									<a class="dropdown-item">
-										Edit
-									</a>
-									<hr class="dropdown-divider">
-									<a href="#" class="dropdown-item">
-										Delete
-									</a>
-								</div>
-							</div>
-						</div>
-					</a>
-				</header>
-			</div>
-
-
-			<div class="card">
-				<header class="card-header">
-					<p class="card-header-title">Even More Testing</p>
-					<a class="card-header-icon" aria-label="more options">
-						<div class="dropdown is-inactive">
-							<div class="dropdown-trigger">
-								<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-									<span>Options</span>
-									<span class="icon is-small">
-										<i class="fas fa-angle-down" aria-hidden="true"></i>
-									</span>
-								</button>
-							</div>
-							<div class="dropdown-menu" id="dropdown-menu" role="menu">
-								<div class="dropdown-content">
-									<a href="#" class="dropdown-item">
-										Go to Article
-									</a>
-									<a class="dropdown-item">
-										Edit
-									</a>
-									<hr class="dropdown-divider">
-									<a href="#" class="dropdown-item">
-										Delete
-									</a>
-								</div>
-							</div>
-						</div>
-					</a>
-				</header>
-			</div>
+			{{else if error}}
+			<div class="notification is-danger">{{ error }}</div>
+			{{/if}}
 
 		</div>
-		<div class="column"></div>
-	</div>
+	</section>
 
-	<!-- Footer Column -->
-	<div class="columns">
-
-		<div class="column"></div>
-		<div class="column is-10 card">Filler Content</div>
-		<div class="column"></div>
-
-	</div>
-
-</div>
-
-<script>
-
-	$(".dropdown").click(function () {
-		$(this).toggleClass('is-active');
-	})
-
-</script> {{!-- Projects list --}}
-<ul>
-	{{#each project}} {{> project-block}} {{/each}}
-</ul>
-
-{{!-- Resources list --}}
-<ul>
-	{{#each resource}} {{> resource-block}} {{/each}}
-</ul>
+	{{> scoreboard}}
+</section>

@@ -1,0 +1,38 @@
+<div class="modal milestone-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Add a Milestone</p>
+        </header>
+        <section class="modal-card-body">
+
+            <!-- Milestone Name Input -->
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="" id="milestoneSubmitTitleField">
+                </div>
+            </div>
+
+            <!-- Description Input -->
+            <div class="field">
+                <label class="label">Description</label>
+                <div class="control">
+                    <textarea class="input" id="milestoneSubmitDescriptionField" rows="15"></textarea>
+                </div>
+            </div>
+
+            <!-- Target Completion Date Input -->
+            <div class="field">
+                <label class="label">Target Completion Date</label>
+                <div class="control">
+                    <input class="input" type="date" placeholder="" id="milestoneSubmitCompletionDateField">
+                </div>
+            </div>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success" id="submitNewMilestone" data-projectId="{{project.id}}">Save changes</button>
+            <button class="button milestone-cancel">Cancel</button>
+        </footer>
+    </div>
+</div>

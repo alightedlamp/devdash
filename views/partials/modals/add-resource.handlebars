@@ -1,0 +1,45 @@
+<div class="modal resource-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Add a Resource</p>
+        </header>
+        <section class="modal-card-body">
+
+            <!-- Project Name Input -->
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="" id="resourceSubmitTitleField">
+                </div>
+            </div>
+
+            <!-- Progress Input -->
+            <div class="field">
+                <label class="label">URL</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="" id="resourceSubmitURLField">
+                </div>
+            </div>
+
+            <!-- Dropdown -->
+            <div class="field">
+                <label class="label">Priority</label>
+                <div class="control">
+                    <div class="select">
+                        <select id="resourceSubmitPriorityField">
+                            <option value="2">High</option>
+                            <option value="1">Normal</option>
+                            <option value="0">Low</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success" id="submitNewResource">Save changes</button>
+            <button class="button resource-cancel">Cancel</button>
+        </footer>
+    </div>
+</div>

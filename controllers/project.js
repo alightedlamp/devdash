@@ -7,8 +7,6 @@ const ensureAuthenticated = require('../util/helpers').ensureAuthenticated;
 
 // Route base is '/project'
 
-// PROJECT ROUTES
-/////////////////////////////////////
 router.get('/', ensureAuthenticated, (req, res) => {
   db.Project.findAll({ where: { user_id: req.user.id } })
     .then(function(results) {
@@ -20,10 +18,44 @@ router.get('/', ensureAuthenticated, (req, res) => {
     });
 });
 
+router.get('/:projectId', ensureAuthenticated, (req, res) => {
+  const projectData = db.Project.findOne({
+    where: {
+      id: req.params.projectId,
+      user_id: req.user.id
+    }
+  });
+  const milestoneData = db.Milestone.findAll({
+    where: {
+      project_id: req.params.projectId
+    }
+  });
+  Promise.all([projectData, milestoneData])
+    .then(data => {
+      const projectData = data[0].dataValues;
+      const milestoneData = data[1].map(milestone => milestone.dataValues);
+      res.render('project', {
+        user: req.user,
+        project: projectData,
+        milestones: milestoneData
+      });
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).render('project', {
+        error:
+          "Something went wrong. Maybe this isn't your item. If it is, we broke something. Bummer!"
+      });
+    });
+});
+
 router.post('/', ensureAuthenticated, (req, res) => {
+  console.log(req.body);
   db.Project.create({
     user_id: req.user.id,
     title: req.body.title,
+    description: req.body.description,
+    target_completion_date: req.body.target_completion_date,
     progress: req.body.progress,
     completed: req.body.completed,
     priority: req.body.priority
@@ -33,14 +65,17 @@ router.post('/', ensureAuthenticated, (req, res) => {
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).send('Error!');
+      res.status(500).send({
+        error: 'Something went wrong. Try again, maybe with valid data.'
+      });
     });
 });
 
-router.put('/:projectId', (req, res) => {
+router.put('/:projectId', ensureAuthenticated, (req, res) => {
   db.Project.update(req.body, {
     where: {
-      id: req.params.projectId
+      id: req.params.projectId,
+      user_id: req.user.id
     }
   })
     .then(function(results) {
@@ -48,14 +83,18 @@ router.put('/:projectId', (req, res) => {
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).send('Error!');
+      res.status(500).send({
+        error:
+          "Something went wrong. Maybe this isn't your item. If it is, we broke something. Bummer!"
+      });
     });
 });
 
-router.delete('/:projectId', (req, res) => {
-  db.Resource.destroy({
+router.delete('/:projectId', ensureAuthenticated, (req, res) => {
+  db.Project.destroy({
     where: {
-      id: req.params.projectId
+      id: req.params.projectId,
+      user_id: req.user.id
     }
   })
     .then(function(results) {
@@ -63,62 +102,10 @@ router.delete('/:projectId', (req, res) => {
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).send('Error!');
-    });
-});
-
-// MILESTONE ROUTES
-/////////////////////////////////////
-
-// List all milestones for a project
-router.get('/milestone/:projectId', ensureAuthenticated, (req, res) => {
-  db.Milestone.findAll({ where: { user_id: req.user.id } })
-    .then(function(results) {
-      res.json(results);
-    })
-    .catch(function(err) {
-      console.log(err);
-      res.status(500).render('500', { error: err });
-    });
-});
-
-router.post('/milestone/:projectId', (req, res) => {
-  db.Milestone.create({
-    user_id: req.user.id,
-    title: req.body.title,
-    target_completion_date: req.body.target_completion_date
-  })
-    .then(result => res.json(result))
-    .catch(err => res.status(500).json(err));
-});
-
-router.put('/milestone/:projectId', (req, res) => {
-  db.Milestone.update(req.body, {
-    where: {
-      id: req.params.projectId
-    }
-  })
-    .then(function(results) {
-      res.json(results);
-    })
-    .catch(function(err) {
-      console.log(err);
-      res.status(500).send('Error!');
-    });
-});
-
-router.delete('/milestone/:projectId', (req, res) => {
-  db.Milestone.destroy({
-    where: {
-      id: req.params.projectId
-    }
-  })
-    .then(function(results) {
-      res.json(results);
-    })
-    .catch(function(err) {
-      console.log(err);
-      res.status(500).send('Error!');
+      res.status(500).send({
+        error:
+          "Something went wrong. Maybe this isn't your item. If it is, we broke something. Bummer!"
+      });
     });
 });
 

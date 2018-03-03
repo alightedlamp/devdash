@@ -1,5 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
   var Milestone = sequelize.define('Milestone', {
+    project_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -7,16 +11,19 @@ module.exports = function(sequelize, DataTypes) {
         len: [2, 140]
       }
     },
+    description: {
+      type: DataTypes.STRING
+    },
     target_completion_date: {
       type: DataTypes.DATE,
       allowNull: false,
       validate: {
-        isDate: true // only allow date strings
+        isDate: true
       }
     },
     completed_date: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
       validate: {
         isDate: true
       }

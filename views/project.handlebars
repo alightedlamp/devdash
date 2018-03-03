@@ -1,95 +1,48 @@
-<div class="container">
+<section class="section">
 
-	<!-- Nav Container -->
-	<nav class="level">
-
-		<!-- Left Side -->
-		<div class="level-left">
-			<div class="level-item">
-				<p class="subtitle is-3">
-					<strong>Devdash</strong>
-				</p>
-			</div>
-		</div>
-
-		<!-- Right side -->
-		<div class="level-right">
-
-			<!-- Login Button -->
-			<p class="level-item">
-				<div class="field">
-					<p class="control">
-						<button class="button is-success" onclick="submitLogin()">
-							Return to Homepage
-						</button>
-					</p>
-				</div>
-			</p>
-
-		</div>
-
-	</nav>
+	{{> nav}}
 
 	<!-- Project Column -->
-	<div class="columns">
-		<div class="column"></div>
-
-		<div class="column is-10 card">
-			<strong>Devdash</strong>
-
-			<br>
-			<br>
-			<div class="card">
-				<header class="card-header">
-
-					<!-- Progress Bar -->
-					<p class="card-header-title">
-						Progress
-						<progress class="progress is-success" value="40" max="100">15%</progress>
+	<section class="section">
+		<div class="container">
+			{{#if error}}
+			<div class="notification is-danger">
+				{{ error }}
+			</div>
+			{{else}}
+			<div class="content">
+				{{#unless milestones}}
+				<div class="notification is-info">
+					<p>Hey! This is your brand new project page. Here you can manage the tasks you need to complete for your project. Start
+						by clicking
+						<strong>Add a Milestone</strong> to add your first task!
 					</p>
-
-					<a class="card-header-icon" aria-label="more options">
-						<div class="dropdown is-inactive">
-							<div class="dropdown-trigger">
-								<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-									<span>Options</span>
-									<span class="icon is-small">
-										<i class="fas fa-angle-down" aria-hidden="true"></i>
-									</span>
-								</button>
-							</div>
-							<div class="dropdown-menu" id="dropdown-menu" role="menu">
-								<div class="dropdown-content">
-									<a href="#" class="dropdown-item">
-										Add a Milestone
-									</a>
-									<a class="dropdown-item">
-										Edit
-									</a>
-									<hr class="dropdown-divider">
-									<a href="#" class="dropdown-item">
-										Delete
-									</a>
-								</div>
-							</div>
-						</div>
-					</a>
-				</header>
-
-				{{#each milestone}} {{> milestone-block}} {{/each}}
-
-
+				</div>
+				{{/unless}}
+			</div>
+			{{> modals/add-milestone}}
+			<div class="card">
+				<div class="card-content">
+					<div class="content">
+						<h2 class="subtitle">
+							<strong>Project: </strong>{{ project.title }}
+						</h2>
+						<p>{{ project.description }}</p>
+						<p>
+							<strong>Due:</strong> {{ project.target_completion_date}}</p>
+						<p>
+							<strong>Progress:</strong>
+						</p>
+						<progress class="progress is-success" value="40" max="100">15%</progress>
+						<p>
+							<a class="button modal-button milestone-button is-success" data-target="modal-ter">Add Milestone</a>
+						</p>
+					</div>
+					{{#if milestones}} {{#each milestones}} {{> milestone-block}} {{/each}} {{/if}}
+				</div>
 			</div>
 		</div>
-		<div class="column"></div>
-	</div>
-
-</div>
-
-<script>
-
-	$(".dropdown").click(function () {
-		$(this).toggleClass('is-active');
-	})
-
-</script>
+		{{/if}}
+	</section>
+	<input type="hidden" value="{{ project.id }}" id="project-id" />
+</section>
