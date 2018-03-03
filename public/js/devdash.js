@@ -97,14 +97,14 @@ $(document).ready(function() {
 
   // The Submit button for the Edit Resource modal window must have ID "submitEditedResource"
   $('#submitEditedResource').click(function() {
-    // The Resource Title field must have id "ResourceEditTitleField"
-    // The Resource URL field must have id "ResourceEditURLField"
-    // The (hidden) Resource ID field must have id "ResourceEditIdField"
+    // The Resource Title field must have id "resourceEditTitleField"
+    // The Resource URL field must have id "resourceEditURLField"
+    // The (hidden) Resource ID field must have id "resourceEditIdField"
     var object = {
-      id: $('#ResourceEditIdField').val(),
-      title: $('#ResourceEditTitleField').val(),
-      url: $('#ResourceEditURLField').va(),
-      priority: ''
+      id: $('#resourceEditIdField').val(),
+      title: $('#resourceEditTitleField').val(),
+      url: $('#resourceEditURLField').val(),
+      priority: $('$resourceEditPriorityField').val()
     };
     submitEditedResource(object);
   });
@@ -133,8 +133,8 @@ $(document).ready(function() {
 
   // THE MODAL FOR SUBMIT NEW MILESTONE HAS TO HAVE A HIDDEN FIELD FOR PROJECTID
   $('#submitNewMilestone').click(function() {
-    // The Resource Title field must have id "ResourceSubmitTitleField"
-    // The Resource URL field must have id "ResourceSubmitURLField"
+    // The Milestone Title field must have id "milestoneSubmitTitleField"
+    // The Milestone URL field must have id "milestoneSubmitURLField"
     var object = {
       title: $('#milestoneSubmitTitleField').val(),
       description: $('#milestoneSubmitDescriptionField').val(),
@@ -151,7 +151,8 @@ $(document).ready(function() {
     var object = {
       id: $('#milestoneEditIdField').val(),
       title: $('#milestoneEditTitleField').val(),
-      target_completion_date: ''
+      description: $('#milestoneEditDescriptionField').val(),
+      target_completion_date: $('#milestoneEditCompletionDateField').val()
     };
     submitEditedMilestone(object);
   });
