@@ -30,12 +30,12 @@
 						<p>
 							<strong>Due:</strong> {{ project.target_completion_date}}</p>
 						<p>
-							<a class="button modal-button milestone-button is-success" data-target="modal-ter">Add Milestone</a>
-						</p>
-						<p>
 							<strong>Progress:</strong>
 						</p>
 						<progress class="progress is-success" value="40" max="100">15%</progress>
+						<p>
+							<a class="button modal-button milestone-button is-success" data-target="modal-ter">Add Milestone</a>
+						</p>
 					</div>
 					{{#if milestones}} {{#each milestones}} {{> milestone-block}} {{/each}} {{/if}}
 				</div>
