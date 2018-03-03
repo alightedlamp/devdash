@@ -32,6 +32,7 @@ router.get('/logout', (req, res) => {
   req.logout();
   req.session.destroy(function(err) {
     req.user = null;
+    console.log(`On logout, user is authenticated: ${req.isAuthenticated()}`);
     console.log(err);
     res.redirect('/');
   });

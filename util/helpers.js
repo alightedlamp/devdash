@@ -1,5 +1,6 @@
 const ensureAuthenticated = function(req, res, next) {
   if (req.isAuthenticated()) {
+    console.log(`User is authorized: ${req.isAuthenticated()}`);
     return next();
   }
   res
