@@ -1,4 +1,6 @@
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 const keys = require('./config/keys');
 const express = require('express');
 const session = require('express-session');
@@ -17,7 +19,7 @@ passport.use(
     {
       clientID: keys.github.id,
       clientSecret: keys.github.secret,
-      callbackURL: 'https://3cab854b.ngrok.io/user/auth/github/callback'
+      callbackURL: 'https://devprogdash.herokuapp.com/user/auth/github/callback'
     },
     function(accessToken, refreshToken, profile, done) {
       const options = {
