@@ -1,5 +1,4 @@
 .env
 toDelete
 .vscode
-/config/config.json
 node_modules
