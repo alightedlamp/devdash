@@ -18,7 +18,7 @@ module.exports = {
   production: {
     username: keys.jawsDbUser,
     password: keys.jawsDbPassword,
-    database: 'database_production',
+    database: keys.jawsDbName,
     host: keys.jawsDbHost,
     dialect: 'mysql'
   }
