@@ -15,11 +15,11 @@ A developer progress and project progress dashboard for encouraging developing d
 
 ### Dashboard:
 
-[Dashboard](/docs/dashboard-page.png)
+![Dashboard](/docs/dashboard-page.png)
 
 ## Project Page:
 
-[Project Page](/docs/project-page.png)
+![Project Page](/docs/project-page.png)
 
 ## Contributors:
 
