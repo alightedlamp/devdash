@@ -1,42 +1,17 @@
 {{!-- Start of Projects repeating element --}}
-<div class="notification" id="project-{{id}}">
-	<h2 class="title project-title">
-		<a href="/project/{{id}}">{{title}}</a>
-	</h2>
-	<div class="content">
-		<p class="project-description">{{description}}</p>
-		<p class="project-progress">
-			<strong>Progress: </strong>{{progress}} %</p>
-		{{#if target_completion_date}}
-		<p>
-			<strong>Due:</strong> {{target_completion_date}}</p>
-		{{/if}} {{#if description}} {{/if}}
-	</div>
-	<div class="dropdown is-inactive">
-		<div class="dropdown-trigger">
-			<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-				<span>Options</span>
-				<span class="icon is-small">
-					<i class="fas fa-angle-down" aria-hidden="true"></i>
-				</span>
-			</button>
-		</div>
-		<div class="dropdown-menu" id="dropdown-menu" role="menu">
-			<div class="dropdown-content">
-				<a class="dropdown-item editProject" data-id="{{id}}">
-					<span>Edit</span>
-				</a>
-				<a class="dropdown-item deleteProject" data-id="{{id}}">
-					<span>Delete</span>
-				</a>
-				<a class="dropdown-item completeProject" data-id="{{id}}">
-					<span>Mark Completed</span>
-				</a>
-			</div>
-		</div>
-	</div>
-	<a href="/project/{{id}}" class="button">Go to Project</a>
-	{{> modals/edit-project}} {{!-- Get all milestones for project id and display them. --}} {{#each milestone}} {{> milestone-block}}
-	{{/each}}
+
+<div class="tabs">
+	<ul>
+		<li class="is-active">
+			<a>Completed</a>
+		</li>
+		<li>
+			<a>In Progress</a>
+		</li>
+	</ul>
+</div>
+{{#if completed_at}}
+<div class="completed-project">{{> project-info}}</div> {{else}}
+<div class="inprogress-project">{{> project-info}}</div> {{/if}} {{> modals/edit-project}}
 </div>
 {{!-- end of repeating element --}}
